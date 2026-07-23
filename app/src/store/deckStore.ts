@@ -81,6 +81,7 @@ export const useDeckStore = create<DeckState>((set, get) => ({
       isLoadingMore: false, exhausted: true, error: null,
       recentThemes: updated,
     });
+    get().persistSession();
   },
 
   restoreSession: (session) => {

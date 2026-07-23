@@ -146,3 +146,16 @@ export async function generateFunFacts(
 
   return JSON.parse(extractJSON(content));
 }
+
+const SUGGEST_PROMPT = `You are a music curator. Suggest a random, interesting, and creative playlist theme or mood description. It should be something a user might type into a playlist generator — like "rainy day jazz", "late night driving", "songs to cook pasta to", "90s nostalgia", etc.
+
+Return ONLY a single string with the suggestion. No JSON, no quotes, no preamble.`;
+
+export async function suggestTheme(): Promise<string> {
+  const content = await chatCompletion([
+    { role: 'system', content: SUGGEST_PROMPT },
+    { role: 'user', content: 'Give me a random theme suggestion.' },
+  ]);
+
+  return content.trim();
+}

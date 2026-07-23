@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
-import { interpretTheme } from '../services/openRouter';
+import { interpretTheme, suggestTheme } from '../services/openRouter';
 import { parallelSearch, getMyTopTracks } from '../services/spotify';
 import { assembleBatch, buildSearchQueries, fetchRecommendedTracks, buildAdaptiveBatch } from '../services/deck';
 import { lookupPreview } from '../services/iTunes';
@@ -112,6 +112,15 @@ async function enrichWithPreviews(
     previewUrl: previews.get(track.id) ?? null,
   }));
 }
+
+router.get('/suggest', async (_req, res, next) => {
+  try {
+    const suggestion = await suggestTheme();
+    res.json({ suggestion });
+  } catch (err) {
+    next(err);
+  }
+});
 
 router.post('/', async (req, res, next) => {
   try {

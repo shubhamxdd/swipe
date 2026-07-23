@@ -36,9 +36,11 @@ export interface NextBatchResponse {
 }
 
 export interface PlaylistSaveResponse {
-  playlistUrl: string;
-  playlistId: string;
+  id: string;
+  uri: string;
+  url: string;
   name: string;
+  trackCount: number;
   skippedDuplicates?: number;
 }
 

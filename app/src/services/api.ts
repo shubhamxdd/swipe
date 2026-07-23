@@ -107,3 +107,7 @@ export function fetchNextBatch(
 export function checkHealth(): Promise<{ status: string }> {
   return request('/api/health');
 }
+
+export function suggestTheme(): Promise<{ suggestion: string }> {
+  return request('/api/theme/suggest');
+}

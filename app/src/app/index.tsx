@@ -7,7 +7,7 @@ import { Music, LogIn, LogOut, Send, Sparkles, Clock, RotateCcw, Settings } from
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
 import { useHistoryStore } from '../store/historyStore';
-import { getAuthUrl, getTokens, submitTheme, checkHealth } from '../services/api';
+import { getAuthUrl, getTokens, submitTheme, checkHealth, suggestTheme } from '../services/api';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
@@ -135,6 +135,15 @@ export default function HomeScreen() {
     }
   }
 
+  async function handleAISuggest() {
+    try {
+      const { suggestion } = await suggestTheme();
+      setThemeInput(suggestion);
+    } catch {
+      setError('Failed to get suggestion');
+    }
+  }
+
   async function handleResume() {
     if (!savedSession) return;
     restoreSession(savedSession);
@@ -235,6 +244,14 @@ export default function HomeScreen() {
             accessibilityLabel="Build my deck"
           >
             <Send size={20} color="#fff" />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.aiButton}
+            onPress={handleAISuggest}
+            accessibilityRole="button"
+            accessibilityLabel="Suggest a random theme"
+          >
+            <Sparkles size={20} color={colors.accent.primary} />
           </TouchableOpacity>
         </View>
 
@@ -346,6 +363,10 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
   },
   submitDisabled: { opacity: 0.4 },
+  aiButton: {
+    width: 50, height: 50, borderRadius: radii.md, backgroundColor: colors.bg.surface,
+    alignItems: 'center', justifyContent: 'center',
+  },
   quickMixButton: {
     alignItems: 'center', justifyContent: 'center',
     backgroundColor: colors.bg.surface, borderRadius: radii.md,

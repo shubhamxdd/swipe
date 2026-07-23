@@ -53,11 +53,11 @@ export default function ReviewScreen() {
       );
 
       await addHistoryEntry({
-        id: result.playlistId,
+        id: result.id,
         name: result.name,
         theme: theme || '',
         trackCount: trackIds.length - (result.skippedDuplicates || 0),
-        url: result.playlistUrl,
+        url: result.url,
         createdAt: new Date().toISOString(),
       });
 
@@ -68,7 +68,7 @@ export default function ReviewScreen() {
       message += `${trackIds.length - (result.skippedDuplicates || 0)} track${trackIds.length - (result.skippedDuplicates || 0) !== 1 ? 's' : ''} added.`;
 
       setPickerVisible(false);
-      router.replace(`/confirmation?url=${encodeURIComponent(result.playlistUrl)}&name=${encodeURIComponent(result.name)}&message=${encodeURIComponent(message)}`);
+      router.replace(`/confirmation?url=${encodeURIComponent(result.url)}&name=${encodeURIComponent(result.name)}&message=${encodeURIComponent(message)}`);
     } catch {
       Alert.alert('Error', 'Failed to save playlist');
     } finally {
