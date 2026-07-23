@@ -3,7 +3,6 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator,
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { LinearGradient } from 'expo-linear-gradient';
 import { Music, LogIn, LogOut, Send, Sparkles, Clock, RotateCcw, Settings, Loader } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
@@ -260,14 +259,18 @@ export default function HomeScreen() {
               accessibilityHint="Describe a vibe, mood, or theme for your playlist"
             />
             {isSuggesting && (
-              <Animated.View style={[styles.inputGlow, { opacity: suggestAnim }]}>
-                <LinearGradient
-                  colors={['rgba(29,185,84,0.4)', 'rgba(29,185,84,0)', 'rgba(29,185,84,0.4)']}
-                  start={{ x: 0, y: 0 }}
-                  end={{ x: 1, y: 0 }}
-                  style={StyleSheet.absoluteFill}
-                />
-              </Animated.View>
+              <Animated.View
+                pointerEvents="none"
+                style={[
+                  styles.inputGlow,
+                  {
+                    opacity: suggestAnim.interpolate({
+                      inputRange: [0, 0.5, 1],
+                      outputRange: [0.3, 0.8, 0.3],
+                    }),
+                  },
+                ]}
+              />
             )}
           </View>
           <TouchableOpacity
@@ -396,7 +399,7 @@ const styles = StyleSheet.create({
   loadingText: { ...typography.body, color: colors.text.secondary, textAlign: 'center', flexShrink: 1 },
   inputSection: { flexDirection: 'row', gap: spacing.sm, marginBottom: spacing.lg },
   inputWrapper: { flex: 1, position: 'relative' },
-  inputGlow: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: radii.md, overflow: 'hidden' },
+  inputGlow: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: radii.md, backgroundColor: colors.accent.primary },
   input: {
     flex: 1, height: 50, backgroundColor: colors.bg.surface, borderRadius: radii.md,
     paddingHorizontal: spacing.lg, color: colors.text.primary, ...typography.input,
