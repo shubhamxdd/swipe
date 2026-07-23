@@ -1,4 +1,4 @@
-import type { ThemeResponse, PlaylistSaveResponse, NextBatchResponse } from '../types';
+import type { ThemeResponse, PlaylistSaveResponse, NextBatchResponse, PlaylistItem } from '../types';
 
 // const API_BASE = 'http://localhost:3000';
 const API_BASE = 'https://environmental-arcuately-maxwell.ngrok-free.dev';
@@ -67,6 +67,7 @@ export function savePlaylist(
   accessToken: string,
   name: string,
   trackIds: string[],
+  existingPlaylistId?: string,
 ): Promise<PlaylistSaveResponse> {
   return request('/api/playlist', {
     method: 'POST',
@@ -74,7 +75,15 @@ export function savePlaylist(
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
     },
-    body: JSON.stringify({ name, track_ids: trackIds }),
+    body: JSON.stringify({ name, track_ids: trackIds, existingPlaylistId }),
+  });
+}
+
+export function fetchPlaylists(
+  accessToken: string,
+): Promise<{ playlists: PlaylistItem[] }> {
+  return request('/api/playlist/list', {
+    headers: { Authorization: `Bearer ${accessToken}` },
   });
 }
 

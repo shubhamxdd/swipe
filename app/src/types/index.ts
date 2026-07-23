@@ -39,4 +39,11 @@ export interface PlaylistSaveResponse {
   playlistUrl: string;
   playlistId: string;
   name: string;
+  skippedDuplicates?: number;
+}
+
+export interface PlaylistItem {
+  id: string;
+  name: string;
+  tracks: { total: number };
 }

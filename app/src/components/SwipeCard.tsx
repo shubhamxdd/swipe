@@ -14,6 +14,7 @@ import * as Haptics from 'expo-haptics';
 import { Play, Pause } from 'lucide-react-native';
 import type { SpotifyTrack } from '../types';
 import { NoPreviewBadge } from './NoPreviewBadge';
+import { TrackDetailModal } from './TrackDetailModal';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
@@ -34,6 +35,7 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
   const rotate = useSharedValue('0deg');
   const entered = useSharedValue(false);
   const hapticRef = useRef<'left' | 'right' | null>(null);
+  const [detailVisible, setDetailVisible] = useState(false);
 
   useEffect(() => {
     entered.value = true;
@@ -79,7 +81,8 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
     return { opacity };
   });
 
-  const gesture = Gesture.Pan()
+  const panGesture = Gesture.Pan()
+    .minDistance(10)
     .runOnJS(true)
     .onUpdate((event) => {
       translateX.value = event.translationX;
@@ -113,12 +116,21 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
       }
     });
 
+  const tapGesture = Gesture.Tap()
+    .runOnJS(true)
+    .onEnd(() => {
+      setDetailVisible(true);
+    });
+
+  const composedGesture = Gesture.Race(tapGesture, panGesture);
+
   const imageUrl = track.album?.images?.[0]?.url;
   const hasPreview = !!track.previewUrl;
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <GestureDetector gesture={gesture}>
+    <>
+    <GestureDetector gesture={composedGesture}>
       <Animated.View
         style={[styles.card, cardAnimatedStyle]}
         accessibilityLabel={`${track.name} by ${track.artists?.map((a) => a.name).join(', ')}`}
@@ -164,6 +176,8 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
         </View>
       </Animated.View>
     </GestureDetector>
+    <TrackDetailModal track={track} visible={detailVisible} onClose={() => setDetailVisible(false)} />
+    </>
   );
 }
 

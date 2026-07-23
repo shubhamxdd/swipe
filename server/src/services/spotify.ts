@@ -138,3 +138,33 @@ export async function parallelSearch(
 
   return allTracks;
 }
+
+export async function getUserPlaylists(
+  accessToken: string,
+): Promise<{ id: string; name: string; tracks: { total: number } }[]> {
+  const data = await fetchSpotify<{
+    items: { id: string; name: string; tracks: { total: number } }[];
+  }>(accessToken, '/me/playlists', { limit: '50' });
+  return data.items;
+}
+
+export async function getPlaylistTrackIds(
+  accessToken: string,
+  playlistId: string,
+): Promise<string[]> {
+  const ids: string[] = [];
+  let url = `/playlists/${playlistId}/tracks?limit=50&fields=items(track(id))`;
+
+  while (url) {
+    const data = await fetchSpotify<{
+      items: { track: { id: string } | null }[];
+      next: string | null;
+    }>(accessToken, url);
+    for (const item of data.items) {
+      if (item.track) ids.push(item.track.id);
+    }
+    url = data.next ?? '';
+  }
+
+  return ids;
+}

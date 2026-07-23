@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { z } from 'zod';
-import { createPlaylist, addTracksToPlaylist } from '../services/spotify';
+import { createPlaylist, addTracksToPlaylist, getUserPlaylists, getPlaylistTrackIds } from '../services/spotify';
 import { AppError } from '../middleware/errorHandler';
 
 const router = Router();
@@ -8,26 +8,59 @@ const router = Router();
 const savePlaylistSchema = z.object({
   name: z.string().min(1).max(100),
   track_ids: z.array(z.string()).min(1).max(200),
+  existingPlaylistId: z.string().optional(),
+});
+
+router.get('/list', async (req, res, next) => {
+  try {
+    const accessToken = req.accessToken!;
+    const playlists = await getUserPlaylists(accessToken);
+    res.json({ playlists });
+  } catch (err) {
+    next(err);
+  }
 });
 
 router.post('/', async (req, res, next) => {
   try {
-    const { name, track_ids } = savePlaylistSchema.parse(req.body);
+    const { name, track_ids, existingPlaylistId } = savePlaylistSchema.parse(req.body);
     const accessToken = req.accessToken!;
     const userId = req.spotifyUser!.id;
 
-    const trackUris = track_ids.map((id) => `spotify:track:${id}`);
+    let finalTrackIds = track_ids;
+    let playlistId: string;
+    let playlistUrl: string;
+    let playlistUri: string;
 
-    const playlist = await createPlaylist(accessToken, userId, name);
+    if (existingPlaylistId) {
+      playlistId = existingPlaylistId;
+      const existingIds = await getPlaylistTrackIds(accessToken, playlistId);
+      const existingSet = new Set(existingIds);
+      finalTrackIds = track_ids.filter((id) => !existingSet.has(id));
 
-    await addTracksToPlaylist(accessToken, playlist.id, trackUris);
+      if (finalTrackIds.length > 0) {
+        const trackUris = finalTrackIds.map((id) => `spotify:track:${id}`);
+        await addTracksToPlaylist(accessToken, playlistId, trackUris);
+      }
+
+      playlistUrl = `https://open.spotify.com/playlist/${playlistId}`;
+      playlistUri = `spotify:playlist:${playlistId}`;
+    } else {
+      const trackUris = track_ids.map((id) => `spotify:track:${id}`);
+      const playlist = await createPlaylist(accessToken, userId, name);
+      playlistId = playlist.id;
+      playlistUrl = playlist.external_urls.spotify;
+      playlistUri = playlist.uri;
+      await addTracksToPlaylist(accessToken, playlistId, trackUris);
+    }
 
     res.json({
-      id: playlist.id,
-      uri: playlist.uri,
-      url: playlist.external_urls.spotify,
+      id: playlistId,
+      uri: playlistUri,
+      url: playlistUrl,
       name,
-      trackCount: track_ids.length,
+      trackCount: finalTrackIds.length,
+      skippedDuplicates: track_ids.length - finalTrackIds.length,
     });
   } catch (err) {
     if (err instanceof z.ZodError) {
