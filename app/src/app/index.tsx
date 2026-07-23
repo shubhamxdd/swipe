@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator 
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { Music, LogIn, Send } from 'lucide-react-native';
+import { Music, LogIn, LogOut, Send } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
 import { getAuthUrl, getTokens, submitTheme } from '../services/api';
@@ -27,8 +27,9 @@ export default function HomeScreen() {
     isLoading: authLoading,
     setTokens,
     accessToken,
+    logout,
   } = useAuthStore();
-  const { setDeck, setError, recentThemes } = useDeckStore();
+  const { setDeck, setError, recentThemes, reset } = useDeckStore();
 
   async function pollTokens(state: string): Promise<boolean> {
     for (let i = 0; i < MAX_POLL_ATTEMPTS; i++) {
@@ -75,6 +76,11 @@ export default function HomeScreen() {
     }
   }
 
+  async function handleLogout() {
+    reset();
+    await logout();
+  }
+
   if (authLoading || isLoggingIn) {
     return (
       <SafeAreaView style={styles.centered}>
@@ -89,12 +95,19 @@ export default function HomeScreen() {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <Music size={36} color={colors.accent.primary} />
-        <Text style={styles.title}>SwipeMix</Text>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.headerTitleRow}>
+            <Music size={36} color={colors.accent.primary} />
+            <Text style={styles.title}>SwipeMix</Text>
+          </View>
+          {isAuthenticated && (
+            <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+              <LogOut size={18} color={colors.text.muted} />
+            </TouchableOpacity>
+          )}
+        </View>
         <Text style={styles.subtitle}>Swipe through tracks. Build a playlist.</Text>
-      </View>
 
       <View style={styles.inputSection}>
         <TextInput
@@ -159,18 +172,33 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg.base,
   },
   header: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     marginTop: spacing.xxl * 1.5,
-    marginBottom: spacing.xxl,
+    marginBottom: spacing.sm,
+  },
+  headerTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: spacing.sm,
   },
-  title: {
-    ...typography.display,
-    color: colors.text.primary,
+  logoutButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: colors.bg.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   subtitle: {
     ...typography.caption,
     color: colors.text.secondary,
+    marginBottom: spacing.xxl,
+  },
+  title: {
+    ...typography.display,
+    color: colors.text.primary,
   },
   inputSection: {
     flexDirection: 'row',

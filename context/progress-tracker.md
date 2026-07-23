@@ -13,22 +13,30 @@ All core SwipeMix frontend features wired into fresh SDK 57 template.
 ## Completed
 
 - **App nuked & rebuilt**: Removed old SDK-52-based `app/`, recreated with `create-expo-app@latest` (SDK 57). Monorepo restructured — `app/` no longer a root workspace member.
-- **Deps installed**: `expo-audio`, `expo-secure-store`, `expo-auth-session`, `zustand`, `lucide-react-native`, `@react-native-async-storage/async-storage`
-- **app.json**: Name/slug/scheme → SwipeMix, dark splash bg (#121212), added plugins (expo-audio, expo-secure-store, expo-router)
+- **Deps installed**: `expo-audio`, `expo-secure-store`, `expo-auth-session`, `expo-crypto`, `zustand`, `lucide-react-native`, `@react-native-async-storage/async-storage`
+- **app.json**: Name/slug/scheme → SwipeMix, dark splash bg (#121212), added plugins
 - **babel.config.js**: Added `react-native-worklets/plugin` for Reanimated 4
 - **Theme system**: `colors.ts` (Spotify dark), `typography.ts`, `spacing.ts`
 - **Types**: `SpotifyTrack`, `ThemeResponse`, `PlaylistSaveResponse`
-- **API service**: `api.ts` — auth URL, token exchange, theme submission, playlist save
+- **API service**: `api.ts` — auth URL, token polling, theme submission, playlist save
+- **PKCE utility**: `pkce.ts` — client-side code verifier/challenge generation (expo-crypto)
 - **Stores**: `authStore.ts` (SecureStore-persisted tokens), `deckStore.ts` (swipe deck state + recent themes)
-- **Components**: `SwipeCard.tsx` (reanimated pan gesture with SKIP/KEEP labels, spring physics), `ProgressBar.tsx`, `TrackRow.tsx`
+- **Components**: `SwipeCard.tsx` (Gesture.Pan() with spring physics, SKIP/KEEP labels), `ProgressBar.tsx`, `TrackRow.tsx`
 - **Routes**:
   - `_layout.tsx` — GestureHandlerRootView + Stack navigator + StatusBar
-  - `index.tsx` — Login (WebBrowser OAuth flow), theme input, recent theme chips
-  - `swipe.tsx` — Card swiping with undo, progress bar, keep/skip buttons
+  - `index.tsx` — Login (WebBrowser.openBrowserAsync + token polling via AppState), theme input, recent theme chips
+  - `swipe.tsx` — Card swiping with undo, progress bar, keep/skip buttons, "all done" view
   - `review.tsx` — Kept-track list with remove, save to Spotify, start over
   - `confirmation.tsx` — Success screen with open-in-Spotify + new mix button
 - **Cleaned up**: Removed all default Expo template components
-- **TypeScript**: `tsc --noEmit` passes cleanly
+- **OAuth flow**: Server-side PKCE + state-based token storage + polling endpoint (GET /api/auth/tokens)
+- **Swipe gesture fix**: Gesture.Pan() with `.runOnJS(true)`, key-based component remounting
+- **Playlist save fix**: Sends track.id (plain ID) not track.uri (full URI) to match backend contract
+- **TypeScript**: `tsc --noEmit` passes cleanly for both app/ and server/
+- **Fun facts integration**:
+  - Backend: `POST /api/fun-facts` route calls `generateFunFacts()`, accepts track array, returns `Record<trackId, string>`
+  - Frontend: `fetchFunFacts()` in api.ts, `funFacts` map in deckStore, background fetch after deck arrives in index.tsx
+  - Card: Fun fact text below artist with pulsing shimmer placeholder while async fetch is in flight
 
 ## In Progress
 
@@ -38,13 +46,13 @@ All core SwipeMix frontend features wired into fresh SDK 57 template.
 
 Per build order (PRD §11):
 
-1. **Wire OAuth end-to-end**: Test login flow on device — backend provides auth URL + code_verifier, frontend opens browser, handles redirect, exchanges code
-2. **Wire theme→deck pipeline**: Connect home screen submit → `POST /api/theme` → swipe screen displays real API results
-3. **Preview lookup**: Ensure expo-audio playback is wired into SwipeCard (preview button / auto-play)
-4. **Fun facts integration**: Batched LLM call, async delivery to card
-5. **Review screen**: Playlist save integration (currently has API call, needs end-to-end testing)
-6. **Polish pass**: Loading states, error states, empty-deck handling, edge cases
-7. **Cross-device testing**: iOS + Android
+1. ~~Wire OAuth end-to-end~~ ✅ Done
+2. ~~Wire theme→deck pipeline~~ ✅ Done
+3. ~~Playlist save~~ ✅ Done
+4. ~~Audio preview~~ ✅ Done (expo-audio play button on album art)
+5. ~~Fun facts integration~~ ✅ Done
+6. **Polish pass**: Loading states, error states, empty-deck handling, undo, edge cases
+7. **Cross-device testing**: iOS + Android, internal dogfooding
 
 ## Open Questions
 
