@@ -30,15 +30,18 @@ function basicAuthHeader(): string {
 
 export async function exchangeCode(
   code: string,
-  codeVerifier: string,
+  codeVerifier?: string,
 ): Promise<SpotifyTokens> {
-  const body = new URLSearchParams({
+  const params: Record<string, string> = {
     grant_type: 'authorization_code',
     code,
     redirect_uri: config.REDIRECT_URI,
     client_id: config.SPOTIFY_CLIENT_ID,
-    code_verifier: codeVerifier,
-  });
+  };
+  if (codeVerifier) {
+    params.code_verifier = codeVerifier;
+  }
+  const body = new URLSearchParams(params);
 
   const res = await fetch(SPOTIFY_TOKEN_URL, {
     method: 'POST',

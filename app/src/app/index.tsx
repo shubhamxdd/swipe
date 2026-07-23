@@ -6,11 +6,12 @@ import * as WebBrowser from 'expo-web-browser';
 import { Music, LogIn, Send } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
-import { getAuthUrl, submitTheme, exchangeCode } from '../services/api';
-import { generateCodeVerifier, generateCodeChallenge } from '../services/pkce';
+import { getAuthUrl, submitTheme } from '../services/api';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
+
+const MOBILE_REDIRECT_URI = 'swipemix://auth/callback';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -28,27 +29,16 @@ export default function HomeScreen() {
   async function handleLogin() {
     try {
       const { url } = await getAuthUrl();
-
-      const parsed = new URL(url);
-      const serverRedirectUri = parsed.searchParams.get('redirect_uri');
-      if (!serverRedirectUri) {
-        setError('Invalid auth configuration');
-        return;
-      }
-
-      const codeVerifier = await generateCodeVerifier();
-      const codeChallenge = await generateCodeChallenge(codeVerifier);
-
-      const authUrl = `${url}&code_challenge=${codeChallenge}&code_challenge_method=S256`;
-
-      const result = await WebBrowser.openAuthSessionAsync(authUrl, serverRedirectUri);
+      const result = await WebBrowser.openAuthSessionAsync(url, MOBILE_REDIRECT_URI);
 
       if (result.type === 'success' && result.url) {
         const resultUrl = new URL(result.url);
-        const code = resultUrl.searchParams.get('code');
-        if (code && codeVerifier) {
-          const tokens = await exchangeCode(code, codeVerifier);
-          await setTokens(tokens.access_token, tokens.refresh_token);
+        const accessToken = resultUrl.searchParams.get('access_token');
+        const refreshToken = resultUrl.searchParams.get('refresh_token');
+        if (accessToken && refreshToken) {
+          await setTokens(accessToken, refreshToken);
+        } else {
+          setError('Failed to retrieve tokens from redirect');
         }
       }
     } catch (err) {

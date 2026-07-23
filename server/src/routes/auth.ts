@@ -9,19 +9,23 @@ router.get('/url', (_req, res) => {
   res.json({ url: getAuthUrl() });
 });
 
-router.get('/callback', (req, res) => {
+router.get('/callback', async (req, res, next) => {
   const code = req.query.code as string | undefined;
   if (!code) {
     res.status(400).send('No authorization code received from Spotify');
     return;
   }
-  res.send(`
-    <h2>Authorization code received</h2>
-    <p>Copy this code and use it in Postman:</p>
-    <pre style="background:#eee;padding:12px;font-size:16px">${code}</pre>
-    <p>Then call <code>POST /api/auth/callback</code> with:</p>
-    <pre style="background:#eee;padding:12px">{"code": "${code}", "code_verifier": "YOUR_VERIFIER"}</pre>
-  `);
+  try {
+    const tokens = await exchangeCode(code);
+    const params = new URLSearchParams({
+      access_token: tokens.access_token,
+      refresh_token: tokens.refresh_token,
+      expires_in: String(tokens.expires_in),
+    });
+    res.redirect(302, `swipemix://auth/callback?${params.toString()}`);
+  } catch (err) {
+    next(err);
+  }
 });
 
 const callbackSchema = z.object({
