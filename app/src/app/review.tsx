@@ -107,8 +107,8 @@ export default function ReviewScreen() {
         </View>
         <View style={styles.headerStats}>
           <Text style={styles.statItem}>{currentIndex} swiped</Text>
-          <Text style={styles.statItem}>{keepPile.length} kept</Text>
-          <Text style={styles.statItem}>{currentIndex - keepPile.length} skipped</Text>
+          <Text style={[styles.statItem,styles.kept]}>{keepPile.length} kept</Text>
+          <Text style={[styles.statItem,styles.skipped]}>{currentIndex - keepPile.length} skipped</Text>
         </View>
         <View style={styles.backBtn} />
       </View>
@@ -207,6 +207,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg, paddingVertical: spacing.md,
   },
   backBtn: { width: 40 },
+  skipped: { color: "rgb(200, 0, 0)" },
+  kept: { color: "rgb(0, 200, 0)" },
   headerText: { alignItems: 'center' },
   headerStats: { flexDirection: 'row', gap: spacing.md },
   statItem: { ...typography.caption, color: colors.text.secondary },
