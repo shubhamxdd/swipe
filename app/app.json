@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "SwipeMix",
+    "slug": "swipemix",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "swipemix",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.swipemix.app",
+      "infoPlist": {
+        "UIBackgroundModes": ["audio"]
+      }
+    },
+    "android": {
+      "package": "com.swipemix.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#121212"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-av"
+    ]
+  }
+}

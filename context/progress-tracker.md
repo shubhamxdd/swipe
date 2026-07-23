@@ -4,21 +4,28 @@ Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-Backend implementation — Milestones 1–3 complete
+Frontend implementation — Milestone 4 complete (scaffold + screens)
 
 ## Current Goal
 
-Backend is fully built: OAuth, theme→deck pipeline (with preview enrichment and caching), and playlist save are all implemented and compiling.
+Expo app built with all 4 screens (home, swipe, review, confirmation), theme system, Zustand stores, API client, and swipe gesture support via react-native-gesture-handler + reanimated.
 
 ## Completed
 
 - Context files written (all 6)
 - Monorepo scaffolded (root package.json with npm workspaces)
 - Express + TypeScript server set up with health check
-- **Milestone 1 — Spotify OAuth**: `/api/auth/url`, `/api/auth/callback`, `/api/auth/refresh` routes with PKCE flow. Server-side code exchange with Basic auth header. Error handling middleware.
-- **Milestone 2 — Theme→Search pipeline**: OpenRouter LLM integration (configurable model, default `deepseek/deepseek-chat`), structured seed prompt, parallel Spotify search with rate-limit throttle (350ms between requests), deck assembly (dedup by ID + normalized title/artist, Fisher-Yates shuffle, cap at 30), auto-broadening fallback (drop era → reduce keywords).
-- **Milestone 3 — Preview lookup**: iTunes Search API integration with batch lookup (5 at a time), in-memory cache with TTL (30 days for preview URLs, 7 days for fun facts), graceful degradation when no preview found.
-- **Milestone 6 — Playlist save**: `/api/playlist` route with create playlist + batch add tracks (100 per request), returns playlist URL for deep linking.
+- **Milestone 1 — Spotify OAuth**: `/api/auth/url`, `/api/auth/callback`, `/api/auth/refresh` routes with PKCE flow.
+- **Milestone 2 — Theme→Search pipeline**: OpenRouter LLM + Spotify search + deck assembly + auto-broadening.
+- **Milestone 3 — Preview lookup**: iTunes Search API + in-memory cache.
+- **Milestone 6 — Playlist save**: `/api/playlist` route (fixed endpoint name per Feb 2026 API changes).
+- **Milestone 4 — Swipe UI**: Expo app scaffolded in `app/` with:
+  - Home screen with theme input, "Build my deck" button, recent themes chips
+  - Swipe screen with gesture-based card swiping (PanGesture from reanimated), preview audio via expo-av, progress indicator, undo, finish early
+  - Review screen with track list, remove, editable playlist name, save to Spotify
+  - Confirmation screen with "Open in Spotify" deep link
+  - Zustand stores (auth + deck), API service, Spotify-dark theme system
+  - OAuth login button (placeholder — deep-link handling pending)
 
 ## In Progress
 
@@ -26,8 +33,11 @@ Backend is fully built: OAuth, theme→deck pipeline (with preview enrichment an
 
 ## Next Up
 
-**Milestone 4 — Swipe UI (frontend)**
-- Scaffold Expo + React Native app in `app/`
+**Polish & OAuth deep-link integration**
+- Wire the Spotify OAuth PKCE flow to the mobile app (generate PKCE on-device, open browser, handle redirect via expo-linking)
+- Test end-to-end flow on actual device
+- Fun facts async integration
+- Edge case handling (empty deck, no preview, network errors)
 - Build swipe card component with react-native-gesture-handler + reanimated
 - Wire to mock deck first, then to real backend
 - Home screen with theme input
