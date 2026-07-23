@@ -182,11 +182,11 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
 }
 
 function ImagePlaceholder() {
-  const opacity = useSharedValue(0.3);
+  const opacity = useSharedValue(0.2);
   const animStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
 
   useEffect(() => {
-    opacity.value = withRepeat(withTiming(1, { duration: 900 }), -1, true);
+    opacity.value = withRepeat(withTiming(1, { duration: 700 }), -1, true);
   }, []);
 
   return <Animated.View style={[styles.imagePlaceholder, animStyle]} />;
@@ -237,6 +237,7 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: CARD_WIDTH,
     height: CARD_WIDTH,
+    position: 'relative',
   },
   imagePlaceholder: {
     position: 'absolute',
@@ -244,7 +245,7 @@ const styles = StyleSheet.create({
     left: 0,
     width: CARD_WIDTH,
     height: CARD_WIDTH,
-    backgroundColor: colors.bg.surface,
+    backgroundColor: colors.bg.cardHighlight,
   },
   tintOverlay: {
     position: 'absolute',
