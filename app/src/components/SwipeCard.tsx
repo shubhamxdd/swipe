@@ -4,7 +4,6 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
-  runOnJS,
 } from 'react-native-reanimated';
 import type { SpotifyTrack } from '../types';
 import { colors } from '../theme/colors';
@@ -33,6 +32,7 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
   }));
 
   const gesture = Gesture.Pan()
+    .runOnJS(true)
     .onUpdate((event) => {
       translateX.value = event.translationX;
       rotate.value = `${(event.translationX / SCREEN_WIDTH) * 25}deg`;
@@ -47,10 +47,10 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
 
       if (willSwipeRight) {
         translateX.value = withSpring(SCREEN_WIDTH * 1.5, { damping: 15 });
-        runOnJS(onSwipeRight)();
+        onSwipeRight();
       } else if (willSwipeLeft) {
         translateX.value = withSpring(-SCREEN_WIDTH * 1.5, { damping: 15 });
-        runOnJS(onSwipeLeft)();
+        onSwipeLeft();
       } else {
         translateX.value = withSpring(0, { damping: 20 });
         rotate.value = withSpring('0deg', { damping: 20 });

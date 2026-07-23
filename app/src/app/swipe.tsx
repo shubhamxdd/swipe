@@ -81,6 +81,7 @@ export default function SwipeScreen() {
       <View style={styles.cardContainer}>
         {currentTrack && (
           <SwipeCard
+            key={currentTrack.id}
             track={currentTrack}
             onSwipeLeft={handleSwipeLeft}
             onSwipeRight={handleSwipeRight}
