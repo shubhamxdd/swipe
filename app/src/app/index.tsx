@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { makeRedirectUri } from 'expo-auth-session';
 import { Music, LogIn, Send } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
-import { getAuthUrl, submitTheme } from '../services/api';
+import { getAuthUrl, submitTheme, exchangeCode } from '../services/api';
+import { generateCodeVerifier, generateCodeChallenge } from '../services/pkce';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
@@ -17,20 +17,38 @@ export default function HomeScreen() {
   const [themeInput, setThemeInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const { isAuthenticated, isLoading: authLoading, exchangeCode, accessToken } = useAuthStore();
-  const { setDeck, setLoading, setError, recentThemes } = useDeckStore();
+  const {
+    isAuthenticated,
+    isLoading: authLoading,
+    setTokens,
+    accessToken,
+  } = useAuthStore();
+  const { setDeck, setError, recentThemes } = useDeckStore();
 
   async function handleLogin() {
     try {
-      const { url, code_verifier } = await getAuthUrl();
-      const redirectUri = makeRedirectUri({ scheme: 'swipemix' });
-      const result = await WebBrowser.openAuthSessionAsync(url, redirectUri);
+      const { url } = await getAuthUrl();
+
+      const parsed = new URL(url);
+      const serverRedirectUri = parsed.searchParams.get('redirect_uri');
+      if (!serverRedirectUri) {
+        setError('Invalid auth configuration');
+        return;
+      }
+
+      const codeVerifier = await generateCodeVerifier();
+      const codeChallenge = await generateCodeChallenge(codeVerifier);
+
+      const authUrl = `${url}&code_challenge=${codeChallenge}&code_challenge_method=S256`;
+
+      const result = await WebBrowser.openAuthSessionAsync(authUrl, serverRedirectUri);
 
       if (result.type === 'success' && result.url) {
-        const parsed = new URL(result.url);
-        const code = parsed.searchParams.get('code') || parsed.searchParams.get('authorization_code');
-        if (code && code_verifier) {
-          await exchangeCode(code, code_verifier);
+        const resultUrl = new URL(result.url);
+        const code = resultUrl.searchParams.get('code');
+        if (code && codeVerifier) {
+          const tokens = await exchangeCode(code, codeVerifier);
+          await setTokens(tokens.access_token, tokens.refresh_token);
         }
       }
     } catch (err) {
