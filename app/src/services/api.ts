@@ -103,3 +103,7 @@ export function fetchNextBatch(
     body: JSON.stringify({ sessionId, keptTracks, skippedTrackIds, seenTrackIds }),
   });
 }
+
+export function checkHealth(): Promise<{ status: string }> {
+  return request('/api/health');
+}

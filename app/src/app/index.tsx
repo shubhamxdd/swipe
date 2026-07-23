@@ -7,7 +7,7 @@ import { Music, LogIn, LogOut, Send, Sparkles, Clock, RotateCcw } from 'lucide-r
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
 import { useHistoryStore } from '../store/historyStore';
-import { getAuthUrl, getTokens, submitTheme } from '../services/api';
+import { getAuthUrl, getTokens, submitTheme, checkHealth } from '../services/api';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
@@ -31,6 +31,21 @@ export default function HomeScreen() {
 
   const abortRef = useRef(false);
   const submitThemeRef = useRef('');
+  const [healthOk, setHealthOk] = useState(true);
+
+  useEffect(() => {
+    async function poll() {
+      try {
+        const res = await checkHealth();
+        setHealthOk(res.status === 'ok');
+      } catch {
+        setHealthOk(false);
+      }
+    }
+    poll();
+    const id = setInterval(poll, 30000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     if (!isSubmitting) {
@@ -149,6 +164,7 @@ export default function HomeScreen() {
           <View style={styles.headerTitleRow}>
             <Music size={36} color={colors.accent.primary} />
             <Text style={styles.title}>SwipeMix</Text>
+            <View style={[styles.healthDot, { backgroundColor: healthOk ? '#22c55e' : '#ef4444' }]} />
           </View>
           {isAuthenticated && (
             <TouchableOpacity
@@ -272,6 +288,7 @@ const styles = StyleSheet.create({
   },
   subtitle: { ...typography.caption, color: colors.text.secondary, marginBottom: spacing.xxl },
   title: { ...typography.display, color: colors.text.primary },
+  healthDot: { width: 8, height: 8, borderRadius: 4, marginLeft: spacing.xs },
   loadingTextContainer: {
     flexDirection: 'row', alignItems: 'center', gap: spacing.sm,
     marginTop: spacing.lg, paddingHorizontal: spacing.xl,

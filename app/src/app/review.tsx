@@ -160,7 +160,7 @@ export default function ReviewScreen() {
                     accessibilityLabel={`Add to ${item.name}`}
                   >
                     <Text style={styles.pickerItemName} numberOfLines={1}>{item.name}</Text>
-                    <Text style={styles.pickerItemCount}>{item.tracks?.total ?? 0} tracks</Text>
+                    <Text style={styles.pickerItemCount}>{item.tracks?.total ? `${item.tracks.total} tracks` : ''}</Text>
                   </TouchableOpacity>
                 )}
               />

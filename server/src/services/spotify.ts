@@ -146,6 +146,8 @@ export async function getUserPlaylists(
     items: ({ id: string; name: string; tracks?: { total: number } | null })[];
   }>(accessToken, '/me/playlists', { limit: '50' });
 
+  console.log('[getUserPlaylists] raw items:', JSON.stringify(data.items.slice(0, 3), null, 2));
+
   const playlists = data.items.filter((p) => !!p.id);
 
   const verified = await Promise.all(
@@ -154,12 +156,11 @@ export async function getUserPlaylists(
       if (total > 0) return { id: p.id, name: p.name, tracks: { total } };
 
       try {
-        const detail = await fetchSpotify<{ tracks: { total: number } }>(
-          accessToken,
-          `/playlists/${p.id}`,
-          { fields: 'tracks.total' },
-        );
-        return { id: p.id, name: p.name, tracks: { total: detail.tracks.total } };
+        const detail = await fetchSpotify<{
+          tracks: { href: string; total: number };
+        }>(accessToken, `/playlists/${p.id}`);
+        console.log(`[getUserPlaylists] detail for ${p.name}:`, detail.tracks?.total);
+        return { id: p.id, name: p.name, tracks: { total: detail.tracks?.total ?? 0 } };
       } catch {
         return { id: p.id, name: p.name, tracks: { total: 0 } };
       }
