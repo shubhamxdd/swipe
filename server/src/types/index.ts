@@ -36,4 +36,5 @@ export interface LLMSeedResponse {
   era?: string;
   artists: string[];
   playlistName: string;
+  recommendedTracks?: { name: string; artist: string }[];
 }

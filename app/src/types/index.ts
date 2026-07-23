@@ -24,9 +24,15 @@ export interface SpotifyTrack {
 }
 
 export interface ThemeResponse {
+  sessionId: string;
   tracks: SpotifyTrack[];
   playlistName: string;
   theme: string;
+}
+
+export interface NextBatchResponse {
+  tracks: SpotifyTrack[];
+  exhausted: boolean;
 }
 
 export interface PlaylistSaveResponse {

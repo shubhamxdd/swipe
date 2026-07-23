@@ -1,9 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { Music, LogIn, LogOut, Send } from 'lucide-react-native';
+import { Music, LogIn, LogOut, Send, Sparkles } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
 import { getAuthUrl, getTokens, submitTheme } from '../services/api';
@@ -14,13 +14,33 @@ import { radii, spacing } from '../theme/spacing';
 const MAX_POLL_ATTEMPTS = 20;
 const POLL_DELAY_MS = 1500;
 
+const loadingMessages = [
+  (theme: string) => `Digging through the crates for "${theme}"…`,
+  (theme: string) => `Finding tracks that match the mood…`,
+  (theme: string) => `Curating the perfect mix…`,
+  (theme: string) => `Almost there…`,
+];
+
 export default function HomeScreen() {
   const router = useRouter();
   const [themeInput, setThemeInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [loadingMsgIndex, setLoadingMsgIndex] = useState(0);
 
   const abortRef = useRef(false);
+  const submitThemeRef = useRef('');
+
+  useEffect(() => {
+    if (!isSubmitting) {
+      setLoadingMsgIndex(0);
+      return;
+    }
+    const id = setInterval(() => {
+      setLoadingMsgIndex((i) => (i + 1) % loadingMessages.length);
+    }, 2500);
+    return () => clearInterval(id);
+  }, [isSubmitting]);
 
   const {
     isAuthenticated,
@@ -64,10 +84,11 @@ export default function HomeScreen() {
   async function handleSubmit() {
     const trimmed = themeInput.trim();
     if (!trimmed || !accessToken) return;
+    submitThemeRef.current = trimmed;
     setIsSubmitting(true);
     try {
       const data = await submitTheme(accessToken, trimmed);
-      setDeck(data.theme, data.playlistName, data.tracks);
+      setDeck(data.sessionId, data.theme, data.playlistName, data.tracks);
       router.push('/swipe');
     } catch {
       setError('Failed to generate playlist');
@@ -94,20 +115,39 @@ export default function HomeScreen() {
     );
   }
 
-  return (
-      <SafeAreaView style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.headerTitleRow}>
-            <Music size={36} color={colors.accent.primary} />
-            <Text style={styles.title}>SwipeMix</Text>
-          </View>
-          {isAuthenticated && (
-            <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-              <LogOut size={18} color={colors.text.muted} />
-            </TouchableOpacity>
-          )}
+  if (isSubmitting) {
+    return (
+      <SafeAreaView style={styles.centered}>
+        <ActivityIndicator size="large" color={colors.accent.primary} />
+        <View style={styles.loadingTextContainer}>
+          <Sparkles size={16} color={colors.accent.primary} />
+          <Text style={styles.loadingText}>
+            {loadingMessages[loadingMsgIndex](submitThemeRef.current)}
+          </Text>
         </View>
-        <Text style={styles.subtitle}>Swipe through tracks. Build a playlist.</Text>
+      </SafeAreaView>
+    );
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.headerTitleRow}>
+          <Music size={36} color={colors.accent.primary} />
+          <Text style={styles.title}>SwipeMix</Text>
+        </View>
+        {isAuthenticated && (
+          <TouchableOpacity
+            style={styles.logoutButton}
+            onPress={handleLogout}
+            accessibilityRole="button"
+            accessibilityLabel="Log out of Spotify"
+          >
+            <LogOut size={18} color={colors.text.muted} />
+          </TouchableOpacity>
+        )}
+      </View>
+      <Text style={styles.subtitle}>Swipe through tracks. Build a playlist.</Text>
 
       <View style={styles.inputSection}>
         <TextInput
@@ -118,22 +158,27 @@ export default function HomeScreen() {
           onChangeText={setThemeInput}
           autoCapitalize="none"
           autoCorrect={false}
+          accessibilityLabel="Theme input"
+          accessibilityHint="Describe a vibe, mood, or theme for your playlist"
         />
         <TouchableOpacity
           style={[styles.submitButton, !accessToken && styles.submitDisabled]}
           onPress={handleSubmit}
           disabled={!accessToken || isSubmitting}
+          accessibilityRole="button"
+          accessibilityLabel="Build my deck"
         >
-          {isSubmitting ? (
-            <ActivityIndicator size="small" color="#fff" />
-          ) : (
-            <Send size={20} color="#fff" />
-          )}
+          <Send size={20} color="#fff" />
         </TouchableOpacity>
       </View>
 
       {!isAuthenticated && (
-        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={handleLogin}
+          accessibilityRole="button"
+          accessibilityLabel="Connect Spotify"
+        >
           <LogIn size={20} color="#fff" />
           <Text style={styles.loginText}>Connect Spotify</Text>
         </TouchableOpacity>
@@ -148,6 +193,8 @@ export default function HomeScreen() {
                 key={i}
                 style={styles.chip}
                 onPress={() => setThemeInput(t)}
+                accessibilityRole="button"
+                accessibilityLabel={`Use recent theme: ${t}`}
               >
                 <Text style={styles.chipText}>{t}</Text>
               </TouchableOpacity>
@@ -170,6 +217,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.bg.base,
+    paddingHorizontal: spacing.lg,
   },
   header: {
     flexDirection: 'row',
@@ -199,6 +247,19 @@ const styles = StyleSheet.create({
   title: {
     ...typography.display,
     color: colors.text.primary,
+  },
+  loadingTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    marginTop: spacing.lg,
+    paddingHorizontal: spacing.xl,
+  },
+  loadingText: {
+    ...typography.body,
+    color: colors.text.secondary,
+    textAlign: 'center',
+    flexShrink: 1,
   },
   inputSection: {
     flexDirection: 'row',

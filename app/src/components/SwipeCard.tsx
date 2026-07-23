@@ -1,13 +1,19 @@
+import { useEffect, useRef, useState } from 'react';
 import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
+  withRepeat,
+  withTiming,
+  runOnJS,
 } from 'react-native-reanimated';
 import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import * as Haptics from 'expo-haptics';
 import { Play, Pause } from 'lucide-react-native';
 import type { SpotifyTrack } from '../types';
+import { NoPreviewBadge } from './NoPreviewBadge';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
@@ -15,6 +21,7 @@ import { radii, spacing } from '../theme/spacing';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const CARD_WIDTH = SCREEN_WIDTH - spacing.lg * 2;
 const SWIPE_THRESHOLD = 100;
+const TINT_THRESHOLD = 50;
 
 interface SwipeCardProps {
   track: SpotifyTrack;
@@ -25,19 +32,66 @@ interface SwipeCardProps {
 export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) {
   const translateX = useSharedValue(0);
   const rotate = useSharedValue('0deg');
+  const entered = useSharedValue(false);
+  const hapticRef = useRef<'left' | 'right' | null>(null);
 
-  const animatedStyle = useAnimatedStyle(() => ({
-    transform: [
-      { translateX: translateX.value },
-      { rotate: rotate.value },
-    ],
-  }));
+  useEffect(() => {
+    entered.value = true;
+  }, []);
+
+  function triggerHaptic(direction: 'left' | 'right') {
+    if (hapticRef.current === direction) return;
+    hapticRef.current = direction;
+    Haptics.impactAsync(
+      direction === 'right'
+        ? Haptics.ImpactFeedbackStyle.Medium
+        : Haptics.ImpactFeedbackStyle.Light,
+    );
+  }
+
+  function clearHaptic() {
+    hapticRef.current = null;
+  }
+
+  const cardAnimatedStyle = useAnimatedStyle(() => {
+    const s = entered.value ? 1 : 0.95;
+    return {
+      transform: [
+        { translateX: translateX.value },
+        { rotate: rotate.value },
+        { scale: withSpring(s, { damping: 15 }) },
+      ],
+      opacity: entered.value ? 1 : 0,
+    };
+  });
+
+  const rightTintStyle = useAnimatedStyle(() => {
+    const opacity = translateX.value > TINT_THRESHOLD
+      ? Math.min((translateX.value - TINT_THRESHOLD) / 150, 0.4)
+      : 0;
+    return { opacity };
+  });
+
+  const leftTintStyle = useAnimatedStyle(() => {
+    const opacity = translateX.value < -TINT_THRESHOLD
+      ? Math.min((-translateX.value - TINT_THRESHOLD) / 150, 0.4)
+      : 0;
+    return { opacity };
+  });
 
   const gesture = Gesture.Pan()
     .runOnJS(true)
     .onUpdate((event) => {
       translateX.value = event.translationX;
       rotate.value = `${(event.translationX / SCREEN_WIDTH) * 25}deg`;
+
+      if (event.translationX > SWIPE_THRESHOLD) {
+        runOnJS(triggerHaptic)('right');
+      } else if (event.translationX < -SWIPE_THRESHOLD) {
+        runOnJS(triggerHaptic)('left');
+      } else {
+        runOnJS(clearHaptic)();
+      }
     })
     .onEnd((event) => {
       const willSwipeRight =
@@ -61,14 +115,34 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
 
   const imageUrl = track.album?.images?.[0]?.url;
   const hasPreview = !!track.previewUrl;
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <GestureDetector gesture={gesture}>
-      <Animated.View style={[styles.card, animatedStyle]}>
+      <Animated.View
+        style={[styles.card, cardAnimatedStyle]}
+        accessibilityLabel={`${track.name} by ${track.artists?.map((a) => a.name).join(', ')}`}
+        accessibilityRole="adjustable"
+        accessibilityActions={[
+          { name: 'swipeLeft', label: 'Skip' },
+          { name: 'swipeRight', label: 'Keep' },
+        ]}
+      >
         {imageUrl && (
-          <View>
-            <Image source={{ uri: imageUrl }} style={styles.image} />
-            {hasPreview && <PreviewButton source={track.previewUrl!} />}
+          <View style={styles.imageContainer}>
+            {!imageLoaded && <ImagePlaceholder />}
+            <Image
+              source={{ uri: imageUrl }}
+              style={styles.image}
+              onLoadEnd={() => setImageLoaded(true)}
+            />
+            <Animated.View style={[styles.tintOverlay, styles.rightTint, rightTintStyle]} />
+            <Animated.View style={[styles.tintOverlay, styles.leftTint, leftTintStyle]} />
+            {hasPreview ? (
+              <PreviewButton source={track.previewUrl!} />
+            ) : (
+              <NoPreviewBadge />
+            )}
           </View>
         )}
         <View style={styles.info}>
@@ -93,6 +167,17 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
   );
 }
 
+function ImagePlaceholder() {
+  const opacity = useSharedValue(0.3);
+  const animStyle = useAnimatedStyle(() => ({ opacity: opacity.value }));
+
+  useEffect(() => {
+    opacity.value = withRepeat(withTiming(1, { duration: 900 }), -1, true);
+  }, []);
+
+  return <Animated.View style={[styles.imagePlaceholder, animStyle]} />;
+}
+
 function PreviewButton({ source }: { source: string }) {
   const player = useAudioPlayer(source);
   const status = useAudioPlayerStatus(player);
@@ -108,7 +193,12 @@ function PreviewButton({ source }: { source: string }) {
   }
 
   return (
-    <Pressable style={styles.previewButton} onPress={toggle}>
+    <Pressable
+      style={styles.previewButton}
+      onPress={toggle}
+      accessibilityRole="button"
+      accessibilityLabel={isPlaying ? 'Pause preview' : 'Play preview'}
+    >
       {isPlaying ? <Pause size={28} color="#fff" /> : <Play size={28} color="#fff" />}
     </Pressable>
   );
@@ -129,6 +219,32 @@ const styles = StyleSheet.create({
   image: {
     width: CARD_WIDTH,
     height: CARD_WIDTH,
+  },
+  imageContainer: {
+    width: CARD_WIDTH,
+    height: CARD_WIDTH,
+  },
+  imagePlaceholder: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: CARD_WIDTH,
+    height: CARD_WIDTH,
+    backgroundColor: colors.bg.surface,
+  },
+  tintOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    borderRadius: radii.xl,
+  },
+  rightTint: {
+    backgroundColor: colors.state.like,
+  },
+  leftTint: {
+    backgroundColor: colors.state.skip,
   },
   previewButton: {
     position: 'absolute',

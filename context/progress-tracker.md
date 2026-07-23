@@ -33,10 +33,17 @@ All core SwipeMix frontend features wired into fresh SDK 57 template.
 - **Swipe gesture fix**: Gesture.Pan() with `.runOnJS(true)`, key-based component remounting
 - **Playlist save fix**: Sends track.id (plain ID) not track.uri (full URI) to match backend contract
 - **TypeScript**: `tsc --noEmit` passes cleanly for both app/ and server/
-- **Fun facts integration**:
-  - Backend: `POST /api/fun-facts` route calls `generateFunFacts()`, accepts track array, returns `Record<trackId, string>`
-  - Frontend: `fetchFunFacts()` in api.ts, `funFacts` map in deckStore, background fetch after deck arrives in index.tsx
-  - Card: Fun fact text below artist with pulsing shimmer placeholder while async fetch is in flight
+- **Fun facts integration**: Removed (scrapped by user)
+- **Polish pass**:
+  - Loading screen with theme-relevant animated text ("Digging through the crates for '{theme}'…" cycles through 4 messages)
+  - "Finish early" button in swipe screen top bar to end before 30 cards
+  - Swipe visual feedback — green (keep) / red (skip) tint overlays on card image that fade in as card is dragged past threshold
+  - Card enter animation — opacity 0→1 + scale 0.95→1 with spring on mount
+  - NoPreviewBadge — "No Preview" pill on cards without preview clips
+  - EmptyDeckMessage — fallback UI with "Try Again" button when search returns zero tracks
+  - Haptics — `expo-haptics` impact on swipe threshold cross (medium for keep, light for skip)
+  - Accessibility labels & roles on all interactive elements across all screens
+- **Components**: Added `NoPreviewBadge.tsx`, `EmptyDeckMessage.tsx`
 
 ## In Progress
 
@@ -50,8 +57,8 @@ Per build order (PRD §11):
 2. ~~Wire theme→deck pipeline~~ ✅ Done
 3. ~~Playlist save~~ ✅ Done
 4. ~~Audio preview~~ ✅ Done (expo-audio play button on album art)
-5. ~~Fun facts integration~~ ✅ Done
-6. **Polish pass**: Loading states, error states, empty-deck handling, undo, edge cases
+5. ~~Fun facts integration~~ ❌ Scrapped
+6. ~~Polish pass~~ ✅ Done
 7. **Cross-device testing**: iOS + Android, internal dogfooding
 
 ## Open Questions

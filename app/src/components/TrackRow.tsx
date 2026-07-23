@@ -14,11 +14,11 @@ interface TrackRowProps {
 export function TrackRow({ track, onRemove }: TrackRowProps) {
   return (
     <View style={styles.row}>
-      <TouchableOpacity onPress={onRemove} style={styles.removeButton}>
+      <TouchableOpacity onPress={onRemove} style={styles.removeButton} accessibilityRole="button" accessibilityLabel={`Remove ${track.name}`}>
         <X size={18} color={colors.state.skip} />
       </TouchableOpacity>
 
-      <View style={styles.info}>
+      <View style={styles.info} accessibilityLabel={`${track.name} by ${track.artists?.map((a) => a.name).join(', ')}`}>
         <Text style={styles.title} numberOfLines={1}>
           {track.name}
         </Text>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { View, Text, TouchableOpacity, FlatList, StyleSheet, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
@@ -17,9 +17,12 @@ export default function ReviewScreen() {
   const accessToken = useAuthStore((s) => s.accessToken);
   const [saving, setSaving] = useState(false);
 
-  const keptTracks = keepPile
-    .map((id) => tracks.find((t) => t.id === id))
-    .filter(Boolean) as typeof tracks;
+  const keptTracks = useMemo(
+    () => keepPile
+      .map((id) => tracks.find((t) => t.id === id))
+      .filter((t): t is NonNullable<typeof t> => t != null),
+    [keepPile, tracks],
+  );
 
   async function handleSave() {
     if (!accessToken || keptTracks.length === 0) return;
@@ -43,7 +46,7 @@ export default function ReviewScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()} style={styles.backBtn}>
+        <TouchableOpacity onPress={() => router.back()} style={styles.backBtn} accessibilityRole="button" accessibilityLabel="Go back to swiping">
           <ArrowLeft size={24} color={colors.text.primary} />
         </TouchableOpacity>
         <View style={styles.headerText}>
@@ -71,13 +74,15 @@ export default function ReviewScreen() {
       />
 
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.replayButton} onPress={handleReplay}>
+        <TouchableOpacity style={styles.replayButton} onPress={handleReplay} accessibilityRole="button" accessibilityLabel="Start over with a new theme">
           <Text style={styles.replayText}>Start Over</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.saveButton, (saving || keptTracks.length === 0) && styles.saveDisabled]}
           disabled={saving || keptTracks.length === 0}
           onPress={handleSave}
+          accessibilityRole="button"
+          accessibilityLabel={saving ? 'Saving playlist' : 'Save playlist to Spotify'}
         >
           <SaveIcon size={20} color="#fff" />
           <Text style={styles.saveText}>

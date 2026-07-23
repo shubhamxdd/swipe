@@ -1,4 +1,4 @@
-import type { ThemeResponse, PlaylistSaveResponse } from '../types';
+import type { ThemeResponse, PlaylistSaveResponse, NextBatchResponse } from '../types';
 
 // const API_BASE = 'http://localhost:3000';
 const API_BASE = 'https://environmental-arcuately-maxwell.ngrok-free.dev';
@@ -75,5 +75,22 @@ export function savePlaylist(
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify({ name, track_ids: trackIds }),
+  });
+}
+
+export function fetchNextBatch(
+  accessToken: string,
+  sessionId: string,
+  keptTracks: { id: string; name: string; artist: string }[],
+  skippedTrackIds: string[],
+  seenTrackIds: string[],
+): Promise<NextBatchResponse> {
+  return request('/api/theme/next', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify({ sessionId, keptTracks, skippedTrackIds, seenTrackIds }),
   });
 }

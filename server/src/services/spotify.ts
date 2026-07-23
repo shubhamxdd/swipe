@@ -44,6 +44,28 @@ export async function searchTracks(
   return data.tracks.items;
 }
 
+export async function searchExactTrack(
+  accessToken: string,
+  name: string,
+  artist: string,
+): Promise<SpotifyTrack | null> {
+  const query = `track:"${name}" artist:"${artist}"`;
+  const results = await searchTracks(accessToken, query, 5);
+
+  const normalizedName = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const normalizedArtist = artist.toLowerCase().replace(/[^a-z0-9]/g, '');
+
+  for (const track of results) {
+    const tName = track.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const tArtist = track.artists[0]?.name.toLowerCase().replace(/[^a-z0-9]/g, '') ?? '';
+    if (tName === normalizedName || tArtist === normalizedArtist) {
+      return track;
+    }
+  }
+
+  return results[0] ?? null;
+}
+
 export async function createPlaylist(
   accessToken: string,
   _userId: string,
@@ -101,14 +123,17 @@ export async function parallelSearch(
   limit = 10,
 ): Promise<SpotifyTrack[]> {
   const allTracks: SpotifyTrack[] = [];
+  const CONCURRENCY = 3;
 
-  for (let i = 0; i < queries.length; i++) {
-    const tracks = await searchTracks(accessToken, queries[i], limit);
-    allTracks.push(...tracks);
-
-    if (i < queries.length - 1) {
-      await throttle(350);
+  for (let i = 0; i < queries.length; i += CONCURRENCY) {
+    const batch = queries.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map((q) => searchTracks(accessToken, q, limit)),
+    );
+    for (const tracks of results) {
+      allTracks.push(...tracks);
     }
+    await throttle(150);
   }
 
   return allTracks;

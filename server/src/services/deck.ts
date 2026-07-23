@@ -1,6 +1,7 @@
 import type { SpotifyTrack } from '../types';
+import { searchExactTrack, parallelSearch } from './spotify';
 
-const DECK_SIZE = 30;
+const BATCH_SIZE = 20;
 
 function normalize(s: string): string {
   return s
@@ -28,10 +29,47 @@ function shuffle<T>(array: T[]): T[] {
   return shuffled;
 }
 
-export function assembleDeck(tracks: SpotifyTrack[]): SpotifyTrack[] {
+function ensureArtistDiversity(tracks: SpotifyTrack[]): SpotifyTrack[] {
+  const artistCount = new Map<string, number>();
+  const result: SpotifyTrack[] = [];
+
+  for (const track of tracks) {
+    const artist = track.artists[0]?.name ?? 'unknown';
+    const count = artistCount.get(artist) ?? 0;
+    if (count >= 2) continue;
+    artistCount.set(artist, count + 1);
+    result.push(track);
+    if (result.length >= BATCH_SIZE) break;
+  }
+
+  return result;
+}
+
+export function assembleBatch(tracks: SpotifyTrack[]): SpotifyTrack[] {
   const deduped = deduplicate(tracks);
-  const shuffled = shuffle(deduped);
-  return shuffled.slice(0, DECK_SIZE);
+  const diverse = ensureArtistDiversity(deduped);
+  const shuffled = shuffle(diverse);
+  return shuffled.slice(0, BATCH_SIZE);
+}
+
+export async function fetchRecommendedTracks(
+  accessToken: string,
+  recs: { name: string; artist: string }[],
+): Promise<SpotifyTrack[]> {
+  const CONCURRENCY = 3;
+  const tracks: SpotifyTrack[] = [];
+
+  for (let i = 0; i < recs.length; i += CONCURRENCY) {
+    const batch = recs.slice(i, i + CONCURRENCY);
+    const results = await Promise.all(
+      batch.map((r) => searchExactTrack(accessToken, r.name, r.artist)),
+    );
+    for (const track of results) {
+      if (track) tracks.push(track);
+    }
+  }
+
+  return tracks;
 }
 
 export function buildSearchQueries(seeds: {
@@ -47,13 +85,46 @@ export function buildSearchQueries(seeds: {
     queries.push(q);
   }
 
-  for (const mood of seeds.moods.slice(0, 5)) {
-    queries.push(mood);
-  }
-
   for (const artist of seeds.artists.slice(0, 3)) {
     queries.push(artist);
   }
 
+  for (const mood of seeds.moods.slice(0, 5)) {
+    const genres = seeds.genres.slice(0, 2);
+    const enriched = genres.length > 0
+      ? `${mood} ${genres.join(' ')}`
+      : mood;
+    queries.push(enriched);
+  }
+
   return queries;
+}
+
+export async function buildAdaptiveBatch(
+  accessToken: string,
+  theme: string,
+  keptTracks: { name: string; artist: string }[],
+  seenTrackIds: Set<string>,
+): Promise<SpotifyTrack[]> {
+  const recs = await import('./openRouter').then((m) =>
+    m.recommendNextBatch(theme, keptTracks),
+  );
+
+  const recTracks = await fetchRecommendedTracks(accessToken, recs.recommendedTracks);
+
+  const keptArtists = keptTracks.map((t) => t.artist);
+  const querySeeds = {
+    genres: recs.genres,
+    moods: recs.moods,
+    artists: keptArtists.slice(0, 3),
+  };
+  const queries = buildSearchQueries(querySeeds);
+  const searchTracks = await parallelSearch(accessToken, queries);
+
+  const allTracks = [...recTracks, ...searchTracks];
+  const deduped = deduplicate(allTracks);
+  const filtered = deduped.filter((t) => !seenTrackIds.has(t.id));
+  const diverse = ensureArtistDiversity(filtered);
+  const shuffled = shuffle(diverse);
+  return shuffled.slice(0, BATCH_SIZE);
 }

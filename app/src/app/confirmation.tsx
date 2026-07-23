@@ -35,12 +35,12 @@ export default function ConfirmationScreen() {
           &ldquo;{playlistName}&rdquo; is now in your Spotify library.
         </Text>
 
-        <TouchableOpacity style={styles.openButton} onPress={handleOpen}>
+        <TouchableOpacity style={styles.openButton} onPress={handleOpen} accessibilityRole="button" accessibilityLabel="Open playlist in Spotify app">
           <ExternalLink size={20} color="#fff" />
           <Text style={styles.openText}>Open in Spotify</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.newButton} onPress={handleNewMix}>
+        <TouchableOpacity style={styles.newButton} onPress={handleNewMix} accessibilityRole="button" accessibilityLabel="Create a new mix">
           <RotateCcw size={20} color={colors.accent.primary} />
           <Text style={styles.newText}>Create New Mix</Text>
         </TouchableOpacity>

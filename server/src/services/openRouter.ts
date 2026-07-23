@@ -11,14 +11,14 @@ interface OpenRouterResponse {
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions';
 
-const SEED_PROMPT = `You are a music expert. Given a theme or mood description, interpret it and return structured search seeds for finding matching songs on Spotify.
+const SEED_PROMPT = `You are a music expert curating a playlist. Given a theme or mood description, return a JSON object with:
 
-Return a JSON object with these fields:
-- "genres": 3–6 genre tags that fit the theme (e.g. "indie rock", "lo-fi hip hop")
-- "moods": 5–10 mood or keyword descriptors (e.g. "melancholic", "upbeat", "rainy")
+- "genres": 3–6 genre tags that fit the theme (e.g. "indie rock", "lo-fi hip hop", "alternative r&b")
+- "moods": 5–10 mood or keyword descriptors (e.g. "melancholic", "upbeat", "rainy day", "introspective")
 - "era": optional year range as a string (e.g. "1995-2005"), null if not applicable
-- "artists": 3–6 representative artist names that match the vibe (use as search hints)
+- "artists": 3–6 representative artist names that match the vibe
 - "playlistName": a short, catchy playlist name suggestion (max 60 chars)
+- "recommendedTracks": 15–25 specific songs that perfectly fit this theme. Each entry should have a "name" and "artist" field. These should be real, well-known tracks — prioritize songs that any Spotify user would recognize over obscure deep cuts.
 
 Only return the JSON. No preamble or explanation.`;
 
@@ -83,6 +83,38 @@ export async function interpretTheme(theme: string): Promise<LLMSeedResponse> {
     era: parsed.era ?? undefined,
     artists: parsed.artists ?? [],
     playlistName: parsed.playlistName ?? `${theme} vibes`,
+    recommendedTracks: parsed.recommendedTracks ?? [],
+  };
+}
+
+const ADAPT_PROMPT = `You are a music expert helping refine a playlist. The user is building a playlist for a specific theme. They've already liked some tracks — recommend more songs that fit the same vibe and match the style of what they liked.
+
+Return a JSON object with:
+- "recommendedTracks": 20 specific songs that fit the theme and match the kept tracks' style. Each entry must have "name" and "artist" fields. Pick well-known, recognizable songs.
+- "genres": 2–4 genre tags that best describe the kept tracks' sound
+- "moods": 2–4 mood keywords that capture the vibe
+
+Only return the JSON. No preamble or explanation.`;
+
+export async function recommendNextBatch(
+  originalTheme: string,
+  keptTracks: { name: string; artist: string }[],
+): Promise<{ recommendedTracks: { name: string; artist: string }[]; genres: string[]; moods: string[] }> {
+  const keptList = keptTracks.map((t) => `- "${t.name}" by ${t.artist}`).join('\n');
+
+  const content = await chatCompletion([
+    { role: 'system', content: ADAPT_PROMPT },
+    {
+      role: 'user',
+      content: `Theme: "${originalTheme}"\n\nTracks they liked:\n${keptList}\n\nReturn JSON.`,
+    },
+  ]);
+
+  const parsed = JSON.parse(extractJSON(content));
+  return {
+    recommendedTracks: parsed.recommendedTracks ?? [],
+    genres: parsed.genres ?? [],
+    moods: parsed.moods ?? [],
   };
 }
 
