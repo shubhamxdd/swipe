@@ -36,6 +36,7 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
   const entered = useSharedValue(false);
   const hapticRef = useRef<'left' | 'right' | null>(null);
   const [detailVisible, setDetailVisible] = useState(false);
+  const previewClickedRef = useRef(false);
 
   useEffect(() => {
     entered.value = true;
@@ -116,21 +117,13 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
       }
     });
 
-  const tapGesture = Gesture.Tap()
-    .runOnJS(true)
-    .onEnd(() => {
-      setDetailVisible(true);
-    });
-
-  const composedGesture = Gesture.Race(tapGesture, panGesture);
-
   const imageUrl = track.album?.images?.[0]?.url;
   const hasPreview = !!track.previewUrl;
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
     <>
-    <GestureDetector gesture={composedGesture}>
+    <GestureDetector gesture={panGesture}>
       <Animated.View
         style={[styles.card, cardAnimatedStyle]}
         accessibilityLabel={`${track.name} by ${track.artists?.map((a) => a.name).join(', ')}`}
@@ -141,15 +134,17 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
         ]}
       >
         {imageUrl && (
-          <View style={styles.imageContainer}>
-            {!imageLoaded && <ImagePlaceholder />}
-            <Image
-              source={{ uri: imageUrl }}
-              style={styles.image}
-              onLoadEnd={() => setImageLoaded(true)}
-            />
-            <Animated.View style={[styles.tintOverlay, styles.rightTint, rightTintStyle]} />
-            <Animated.View style={[styles.tintOverlay, styles.leftTint, leftTintStyle]} />
+          <View style={styles.imageContainerOuter}>
+            <Pressable onPress={() => setDetailVisible(true)} style={styles.imageContainer}>
+              {!imageLoaded && <ImagePlaceholder />}
+              <Image
+                source={{ uri: imageUrl }}
+                style={styles.image}
+                onLoadEnd={() => setImageLoaded(true)}
+              />
+              <Animated.View style={[styles.tintOverlay, styles.rightTint, rightTintStyle]} />
+              <Animated.View style={[styles.tintOverlay, styles.leftTint, leftTintStyle]} />
+            </Pressable>
             {hasPreview ? (
               <PreviewButton source={track.previewUrl!} />
             ) : (
@@ -157,14 +152,14 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
             )}
           </View>
         )}
-        <View style={styles.info}>
+        <Pressable onPress={() => setDetailVisible(true)} style={styles.info}>
           <Text style={styles.title} numberOfLines={1}>
             {track.name}
           </Text>
           <Text style={styles.artist} numberOfLines={1}>
             {track.artists?.map((a) => a.name).join(', ')}
           </Text>
-        </View>
+        </Pressable>
 
         <View style={styles.swipeHintContainer}>
           <View style={styles.swipeHintLeft}>
@@ -237,6 +232,9 @@ const styles = StyleSheet.create({
   imageContainer: {
     width: CARD_WIDTH,
     height: CARD_WIDTH,
+    position: 'relative',
+  },
+  imageContainerOuter: {
     position: 'relative',
   },
   imagePlaceholder: {

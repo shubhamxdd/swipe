@@ -6,6 +6,7 @@ const SPOTIFY_TOKEN_URL = 'https://accounts.spotify.com/api/token';
 
 const SCOPES = [
   'playlist-read-private',
+  'playlist-read-collaborative',
   'playlist-modify-public',
   'playlist-modify-private',
   'user-read-private',
