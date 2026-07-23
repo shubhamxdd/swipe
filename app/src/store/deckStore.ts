@@ -27,6 +27,7 @@ interface DeckState {
   recentThemes: string[];
   savedSession: PersistedSession | null;
   setDeck: (sessionId: string, theme: string, playlistName: string, tracks: SpotifyTrack[]) => void;
+  setDeckBatch: (sessionId: string, theme: string, playlistName: string, tracks: SpotifyTrack[]) => void;
   restoreSession: (session: PersistedSession) => void;
   appendTracks: (tracks: SpotifyTrack[], exhausted: boolean) => void;
   swipeRight: () => void;
@@ -68,6 +69,18 @@ export const useDeckStore = create<DeckState>((set, get) => ({
       recentThemes: updated,
     });
     get().persistSession();
+  },
+
+  setDeckBatch: (sessionId, theme, playlistName, tracks) => {
+    const { recentThemes } = get();
+    const updated = [theme, ...recentThemes.filter((t) => t !== theme)].slice(0, 10);
+    const allIds = tracks.map((t) => t.id);
+    set({
+      sessionId, theme, playlistName, tracks,
+      keepPile: allIds, currentIndex: tracks.length,
+      isLoadingMore: false, exhausted: true, error: null,
+      recentThemes: updated,
+    });
   },
 
   restoreSession: (session) => {

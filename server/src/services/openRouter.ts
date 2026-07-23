@@ -20,6 +20,8 @@ const SEED_PROMPT = `You are a music expert curating a playlist. Given a theme o
 - "playlistName": a short, catchy playlist name suggestion (max 60 chars)
 - "recommendedTracks": 15–25 specific songs that perfectly fit this theme. Each entry should have a "name" and "artist" field. These should be real, well-known tracks — prioritize songs that any Spotify user would recognize over obscure deep cuts.
 
+The user's current most-played tracks are provided below. Use them as a taste signal — lean slightly toward styles/genres/artists they already enjoy while still matching the requested theme.
+
 Only return the JSON. No preamble or explanation.`;
 
 const FACT_PROMPT = `You are a music trivia expert. For each track below, provide one short fun fact (max 2 sentences). 
@@ -66,11 +68,20 @@ function extractJSON(text: string): string {
   return text.trim();
 }
 
-export async function interpretTheme(theme: string): Promise<LLMSeedResponse> {
+export async function interpretTheme(
+  theme: string,
+  topTracks?: { name: string; artist: string }[],
+): Promise<LLMSeedResponse> {
+  let userMsg = `Theme: "${theme}"`;
+  if (topTracks && topTracks.length > 0) {
+    const topList = topTracks.map((t) => `- "${t.name}" by ${t.artist}`).join('\n');
+    userMsg += `\n\nUser's most-played tracks (use as taste signal):\n${topList}`;
+  }
+
   const content = await chatCompletion(
     [
       { role: 'system', content: SEED_PROMPT },
-      { role: 'user', content: `Theme: "${theme}"` },
+      { role: 'user', content: userMsg },
     ],
     { type: 'json_object' },
   );

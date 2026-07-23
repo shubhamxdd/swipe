@@ -1,7 +1,7 @@
-import { View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Linking, Share } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter, useLocalSearchParams } from 'expo-router';
-import { CheckCircle, ExternalLink, RotateCcw } from 'lucide-react-native';
+import { CheckCircle, ExternalLink, RotateCcw, Share2 } from 'lucide-react-native';
 import { useDeckStore } from '../store/deckStore';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -21,6 +21,13 @@ export default function ConfirmationScreen() {
     }
   }
 
+  async function handleShare() {
+    await Share.share({
+      message: `Check out my "${playlistName}" playlist on Spotify! ${playlistUrl}`,
+      url: playlistUrl,
+    });
+  }
+
   function handleNewMix() {
     reset();
     router.replace('/');
@@ -38,6 +45,11 @@ export default function ConfirmationScreen() {
         <TouchableOpacity style={styles.openButton} onPress={handleOpen} accessibilityRole="button" accessibilityLabel="Open playlist in Spotify app">
           <ExternalLink size={20} color="#fff" />
           <Text style={styles.openText}>Open in Spotify</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.shareButton} onPress={handleShare} accessibilityRole="button" accessibilityLabel="Share playlist">
+          <Share2 size={20} color={colors.accent.primary} />
+          <Text style={styles.shareText}>Share Playlist</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.newButton} onPress={handleNewMix} accessibilityRole="button" accessibilityLabel="Create a new mix">
@@ -86,6 +98,22 @@ const styles = StyleSheet.create({
   openText: {
     ...typography.button,
     color: '#fff',
+  },
+  shareButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: spacing.sm,
+    borderWidth: 1,
+    borderColor: colors.accent.primary,
+    borderRadius: radii.xl,
+    paddingHorizontal: spacing.xl,
+    paddingVertical: spacing.md,
+    width: '100%',
+  },
+  shareText: {
+    ...typography.button,
+    color: colors.accent.primary,
   },
   newButton: {
     flexDirection: 'row',

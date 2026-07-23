@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import {
-  View, Text, TouchableOpacity, FlatList, StyleSheet, Alert, Modal, ActivityIndicator,
+  View, Text, TouchableOpacity, FlatList, StyleSheet, Alert, Modal, ActivityIndicator, TextInput,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
@@ -17,13 +17,21 @@ import type { PlaylistItem } from '../types';
 
 export default function ReviewScreen() {
   const router = useRouter();
-  const { playlistName, keepPile, tracks, removeTrack, reorderTracks, reset, theme } = useDeckStore();
+  const { playlistName, keepPile, tracks, currentIndex, removeTrack, reorderTracks, reset, theme } = useDeckStore();
   const accessToken = useAuthStore((s) => s.accessToken);
   const addHistoryEntry = useHistoryStore((s) => s.addEntry);
   const [saving, setSaving] = useState(false);
   const [pickerVisible, setPickerVisible] = useState(false);
   const [playlists, setPlaylists] = useState<PlaylistItem[]>([]);
   const [loadingPlaylists, setLoadingPlaylists] = useState(false);
+  const [playlistSearch, setPlaylistSearch] = useState('');
+
+  const filteredPlaylists = useMemo(
+    () => playlists.filter((p) =>
+      p.name.toLowerCase().includes(playlistSearch.toLowerCase()),
+    ),
+    [playlists, playlistSearch],
+  );
 
   const keptTracks = useMemo(
     () => keepPile
@@ -69,6 +77,7 @@ export default function ReviewScreen() {
   }
 
   async function openPlaylistPicker() {
+    setPlaylistSearch('');
     setLoadingPlaylists(true);
     setPickerVisible(true);
     try {
@@ -95,6 +104,11 @@ export default function ReviewScreen() {
         <View style={styles.headerText}>
           <Text style={styles.title}>Review</Text>
           <Text style={styles.subtitle}>{keptTracks.length} tracks</Text>
+        </View>
+        <View style={styles.headerStats}>
+          <Text style={styles.statItem}>{currentIndex} swiped</Text>
+          <Text style={styles.statItem}>{keepPile.length} kept</Text>
+          <Text style={styles.statItem}>{currentIndex - keepPile.length} skipped</Text>
         </View>
         <View style={styles.backBtn} />
       </View>
@@ -148,8 +162,18 @@ export default function ReviewScreen() {
             ) : playlists.length === 0 ? (
               <Text style={styles.pickerEmpty}>No playlists found.</Text>
             ) : (
+              <>
+              <TextInput
+                style={styles.pickerSearch}
+                placeholder="Search playlists..."
+                placeholderTextColor={colors.text.muted}
+                value={playlistSearch}
+                onChangeText={setPlaylistSearch}
+                autoCapitalize="none"
+                autoCorrect={false}
+              />
               <FlatList
-                data={playlists}
+                data={filteredPlaylists}
                 keyExtractor={(item) => item.id}
                 style={styles.pickerList}
                 renderItem={({ item }) => (
@@ -164,6 +188,7 @@ export default function ReviewScreen() {
                   </TouchableOpacity>
                 )}
               />
+              </>
             )}
             <TouchableOpacity style={styles.pickerCancel} onPress={() => setPickerVisible(false)}>
               <Text style={styles.pickerCancelText}>Cancel</Text>
@@ -183,6 +208,8 @@ const styles = StyleSheet.create({
   },
   backBtn: { width: 40 },
   headerText: { alignItems: 'center' },
+  headerStats: { flexDirection: 'row', gap: spacing.md },
+  statItem: { ...typography.caption, color: colors.text.secondary },
   title: { ...typography.trackTitle, color: colors.text.primary },
   subtitle: { ...typography.caption, color: colors.text.secondary },
   list: { padding: spacing.lg, gap: spacing.sm },
@@ -222,6 +249,11 @@ const styles = StyleSheet.create({
   },
   pickerItemName: { ...typography.body, color: colors.text.primary, flex: 1 },
   pickerItemCount: { ...typography.caption, color: colors.text.muted },
+  pickerSearch: {
+    backgroundColor: colors.bg.surface, borderRadius: radii.md,
+    paddingHorizontal: spacing.md, paddingVertical: spacing.sm,
+    color: colors.text.primary, marginBottom: spacing.sm,
+  },
   pickerEmpty: { ...typography.body, color: colors.text.muted, textAlign: 'center', margin: spacing.xl },
   pickerCancel: { alignItems: 'center', paddingVertical: spacing.lg, marginTop: spacing.sm },
   pickerCancelText: { ...typography.button, color: colors.text.secondary },

@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator,
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { Music, LogIn, LogOut, Send, Sparkles, Clock, RotateCcw } from 'lucide-react-native';
+import { Music, LogIn, LogOut, Send, Sparkles, Clock, RotateCcw, Settings } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
 import { useHistoryStore } from '../store/historyStore';
@@ -65,7 +65,7 @@ export default function HomeScreen() {
     accessToken,
     logout,
   } = useAuthStore();
-  const { setDeck, setError, recentThemes, reset, loadSession, savedSession, restoreSession } = useDeckStore();
+  const { setDeck, setDeckBatch, setError, recentThemes, reset, loadSession, savedSession, restoreSession } = useDeckStore();
   const { history, loadHistory } = useHistoryStore();
 
   useEffect(() => {
@@ -112,6 +112,22 @@ export default function HomeScreen() {
       const data = await submitTheme(accessToken, trimmed);
       setDeck(data.sessionId, data.theme, data.playlistName, data.tracks);
       router.push('/swipe');
+    } catch {
+      setError('Failed to generate playlist');
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
+  async function handleQuickMix() {
+    const trimmed = themeInput.trim();
+    if (!trimmed || !accessToken) return;
+    submitThemeRef.current = trimmed;
+    setIsSubmitting(true);
+    try {
+      const data = await submitTheme(accessToken, trimmed);
+      setDeckBatch(data.sessionId, data.theme, data.playlistName, data.tracks);
+      router.push('/review');
     } catch {
       setError('Failed to generate playlist');
     } finally {
@@ -167,14 +183,24 @@ export default function HomeScreen() {
             <View style={[styles.healthDot, { backgroundColor: healthOk ? '#22c55e' : '#ef4444' }]} />
           </View>
           {isAuthenticated && (
-            <TouchableOpacity
-              style={styles.logoutButton}
-              onPress={handleLogout}
-              accessibilityRole="button"
-              accessibilityLabel="Log out of Spotify"
-            >
-              <LogOut size={18} color={colors.text.muted} />
-            </TouchableOpacity>
+            <View style={styles.headerActions}>
+              <TouchableOpacity
+                style={styles.iconButton}
+                onPress={() => router.push('/settings')}
+                accessibilityRole="button"
+                accessibilityLabel="Settings"
+              >
+                <Settings size={18} color={colors.text.muted} />
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.logoutButton}
+                onPress={handleLogout}
+                accessibilityRole="button"
+                accessibilityLabel="Log out of Spotify"
+              >
+                <LogOut size={18} color={colors.text.muted} />
+              </TouchableOpacity>
+            </View>
           )}
         </View>
         <Text style={styles.subtitle}>Swipe through tracks. Build a playlist.</Text>
@@ -211,6 +237,17 @@ export default function HomeScreen() {
             <Send size={20} color="#fff" />
           </TouchableOpacity>
         </View>
+
+        {isAuthenticated && themeInput.trim().length >= 2 && (
+          <TouchableOpacity
+            style={styles.quickMixButton}
+            onPress={handleQuickMix}
+            accessibilityRole="button"
+            accessibilityLabel="Quick mix — skip swiping and keep all tracks"
+          >
+            <Text style={styles.quickMixText}>Quick Mix — Keep All</Text>
+          </TouchableOpacity>
+        )}
 
         {!isAuthenticated && (
           <TouchableOpacity
@@ -282,6 +319,11 @@ const styles = StyleSheet.create({
     marginTop: spacing.xxl * 1.5, marginBottom: spacing.sm,
   },
   headerTitleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  headerActions: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  iconButton: {
+    width: 36, height: 36, borderRadius: 18, backgroundColor: colors.bg.surface,
+    alignItems: 'center', justifyContent: 'center',
+  },
   logoutButton: {
     width: 36, height: 36, borderRadius: 18, backgroundColor: colors.bg.surface,
     alignItems: 'center', justifyContent: 'center',
@@ -304,6 +346,12 @@ const styles = StyleSheet.create({
     alignItems: 'center', justifyContent: 'center',
   },
   submitDisabled: { opacity: 0.4 },
+  quickMixButton: {
+    alignItems: 'center', justifyContent: 'center',
+    backgroundColor: colors.bg.surface, borderRadius: radii.md,
+    paddingVertical: spacing.md, marginBottom: spacing.lg,
+  },
+  quickMixText: { ...typography.button, color: colors.accent.primary },
   loginButton: {
     flexDirection: 'row', alignItems: 'center', justifyContent: 'center',
     gap: spacing.sm, backgroundColor: colors.accent.primary, borderRadius: radii.md,

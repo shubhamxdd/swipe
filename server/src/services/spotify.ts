@@ -32,6 +32,21 @@ export async function getMe(accessToken: string): Promise<SpotifyUser> {
   return fetchSpotify<SpotifyUser>(accessToken, '/me');
 }
 
+export async function getMyTopTracks(
+  accessToken: string,
+  limit = 10,
+): Promise<{ id: string; name: string; artist: string }[]> {
+  const data = await fetchSpotify<{
+    items: { id: string; name: string; artists: { name: string }[] }[];
+  }>(accessToken, '/me/top/tracks', { limit: String(limit), time_range: 'medium_term' });
+
+  return data.items.map((t) => ({
+    id: t.id,
+    name: t.name,
+    artist: t.artists[0]?.name ?? '',
+  }));
+}
+
 export async function searchTracks(
   accessToken: string,
   query: string,

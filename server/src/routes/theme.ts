@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { randomUUID } from 'node:crypto';
 import { interpretTheme } from '../services/openRouter';
-import { parallelSearch } from '../services/spotify';
+import { parallelSearch, getMyTopTracks } from '../services/spotify';
 import { assembleBatch, buildSearchQueries, fetchRecommendedTracks, buildAdaptiveBatch } from '../services/deck';
 import { lookupPreview } from '../services/iTunes';
 import { previewUrlCache } from '../cache/index';
@@ -45,7 +45,14 @@ async function buildInitialDeck(
   accessToken: string,
   theme: string,
 ): Promise<{ tracks: SpotifyTrack[]; playlistName: string; seeds: LLMSeedResponse }> {
-  let seeds = await interpretTheme(theme);
+  let topTracks: { name: string; artist: string }[] = [];
+  try {
+    topTracks = await getMyTopTracks(accessToken, 10);
+  } catch {
+    // top tracks not available — proceed without taste signal
+  }
+
+  let seeds = await interpretTheme(theme, topTracks);
 
   for (let attempt = 0; attempt < 3; attempt++) {
     const recTracks = seeds.recommendedTracks?.length
