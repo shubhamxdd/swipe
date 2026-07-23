@@ -1,0 +1,2536 @@
+{
+    "theme": "rainy day coding",
+    "playlistName": "Rainy Day Coding Vibes",
+    "tracks": [
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/2KxvnWERXm2kk2s89TyrRO"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/2KxvnWERXm2kk2s89TyrRO",
+                        "id": "2KxvnWERXm2kk2s89TyrRO",
+                        "name": "Lowfly",
+                        "type": "artist",
+                        "uri": "spotify:artist:2KxvnWERXm2kk2s89TyrRO"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/1Uxl81SxbkzmQwHPxR8Avp"
+                },
+                "href": "https://api.spotify.com/v1/albums/1Uxl81SxbkzmQwHPxR8Avp",
+                "id": "1Uxl81SxbkzmQwHPxR8Avp",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b2738d24af0261af879d3cafa2c4"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e028d24af0261af879d3cafa2c4"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d000048518d24af0261af879d3cafa2c4"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Relaxing Lo-fi Tunes",
+                "release_date": "2024-11-08",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:1Uxl81SxbkzmQwHPxR8Avp"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2KxvnWERXm2kk2s89TyrRO"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2KxvnWERXm2kk2s89TyrRO",
+                    "id": "2KxvnWERXm2kk2s89TyrRO",
+                    "name": "Lowfly",
+                    "type": "artist",
+                    "uri": "spotify:artist:2KxvnWERXm2kk2s89TyrRO"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 185500,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "GB8KE2422839"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/2sCkuw5uBbWqU4qQGGvE1z"
+            },
+            "href": "https://api.spotify.com/v1/tracks/2sCkuw5uBbWqU4qQGGvE1z",
+            "id": "2sCkuw5uBbWqU4qQGGvE1z",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Relaxing Lo-fi Tunes",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:2sCkuw5uBbWqU4qQGGvE1z",
+            "previewUrl": null
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                        "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                        "name": "Nujabes",
+                        "type": "artist",
+                        "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/5Fmr3KeGe2IAVFmMxUq1sD"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/5Fmr3KeGe2IAVFmMxUq1sD",
+                        "id": "5Fmr3KeGe2IAVFmMxUq1sD",
+                        "name": "fat jon",
+                        "type": "artist",
+                        "uri": "spotify:artist:5Fmr3KeGe2IAVFmMxUq1sD"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/3uNaLrScYulpXLRmQquP9I"
+                },
+                "href": "https://api.spotify.com/v1/albums/3uNaLrScYulpXLRmQquP9I",
+                "id": "3uNaLrScYulpXLRmQquP9I",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27359ef99ed996b4e537ed2e6a3"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0259ef99ed996b4e537ed2e6a3"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485159ef99ed996b4e537ed2e6a3"
+                    }
+                ],
+                "is_playable": true,
+                "name": "samurai champloo music record departure",
+                "release_date": "2004-06-23",
+                "release_date_precision": "day",
+                "total_tracks": 17,
+                "type": "album",
+                "uri": "spotify:album:3uNaLrScYulpXLRmQquP9I"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                    "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                    "name": "Nujabes",
+                    "type": "artist",
+                    "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/0FB6beTn4vescDdnHeCUm9"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/0FB6beTn4vescDdnHeCUm9",
+                    "id": "0FB6beTn4vescDdnHeCUm9",
+                    "name": "Shing02",
+                    "type": "artist",
+                    "uri": "spotify:artist:0FB6beTn4vescDdnHeCUm9"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 202066,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "JPVI00423020"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/7hzm68uGbxcvQY9FAtpk2s"
+            },
+            "href": "https://api.spotify.com/v1/tracks/7hzm68uGbxcvQY9FAtpk2s",
+            "id": "7hzm68uGbxcvQY9FAtpk2s",
+            "is_local": false,
+            "is_playable": true,
+            "name": "battlecry",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:7hzm68uGbxcvQY9FAtpk2s",
+            "previewUrl": null
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7mz57vhpn0t6ETubyNa2Lp"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7mz57vhpn0t6ETubyNa2Lp",
+                        "id": "7mz57vhpn0t6ETubyNa2Lp",
+                        "name": "Rohit Shakya",
+                        "type": "artist",
+                        "uri": "spotify:artist:7mz57vhpn0t6ETubyNa2Lp"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1deQzOQwArAsUgm2WdjtyI"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1deQzOQwArAsUgm2WdjtyI",
+                        "id": "1deQzOQwArAsUgm2WdjtyI",
+                        "name": "Sajjan Raj Vaidya",
+                        "type": "artist",
+                        "uri": "spotify:artist:1deQzOQwArAsUgm2WdjtyI"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/06lmf1zX4fQ2Tue7byCt90"
+                },
+                "href": "https://api.spotify.com/v1/albums/06lmf1zX4fQ2Tue7byCt90",
+                "id": "06lmf1zX4fQ2Tue7byCt90",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273bfc6ba855157651b2d7cbe1a"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02bfc6ba855157651b2d7cbe1a"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851bfc6ba855157651b2d7cbe1a"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Mellow",
+                "release_date": "2018-11-19",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:06lmf1zX4fQ2Tue7byCt90"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/7mz57vhpn0t6ETubyNa2Lp"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/7mz57vhpn0t6ETubyNa2Lp",
+                    "id": "7mz57vhpn0t6ETubyNa2Lp",
+                    "name": "Rohit Shakya",
+                    "type": "artist",
+                    "uri": "spotify:artist:7mz57vhpn0t6ETubyNa2Lp"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1deQzOQwArAsUgm2WdjtyI"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1deQzOQwArAsUgm2WdjtyI",
+                    "id": "1deQzOQwArAsUgm2WdjtyI",
+                    "name": "Sajjan Raj Vaidya",
+                    "type": "artist",
+                    "uri": "spotify:artist:1deQzOQwArAsUgm2WdjtyI"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 216000,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "usl4q1851239"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/522Kz7dt6L6UVoHZzXpgkn"
+            },
+            "href": "https://api.spotify.com/v1/tracks/522Kz7dt6L6UVoHZzXpgkn",
+            "id": "522Kz7dt6L6UVoHZzXpgkn",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Mellow",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:522Kz7dt6L6UVoHZzXpgkn",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/cf/bf/b6/cfbfb684-02dc-8df5-75b9-b6199e82f4d9/mzaf_6435736125149419654.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1U8sUNhh7cDKRsdUqW7Guk"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1U8sUNhh7cDKRsdUqW7Guk",
+                        "id": "1U8sUNhh7cDKRsdUqW7Guk",
+                        "name": "Sawhneyboi",
+                        "type": "artist",
+                        "uri": "spotify:artist:1U8sUNhh7cDKRsdUqW7Guk"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/6im3m0Ad560vFj7SNPpcI6"
+                },
+                "href": "https://api.spotify.com/v1/albums/6im3m0Ad560vFj7SNPpcI6",
+                "id": "6im3m0Ad560vFj7SNPpcI6",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273abee0f3c52649f0c77c8dd42"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02abee0f3c52649f0c77c8dd42"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851abee0f3c52649f0c77c8dd42"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Folkstep",
+                "release_date": "2025-10-01",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:6im3m0Ad560vFj7SNPpcI6"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1U8sUNhh7cDKRsdUqW7Guk"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1U8sUNhh7cDKRsdUqW7Guk",
+                    "id": "1U8sUNhh7cDKRsdUqW7Guk",
+                    "name": "Sawhneyboi",
+                    "type": "artist",
+                    "uri": "spotify:artist:1U8sUNhh7cDKRsdUqW7Guk"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 125704,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "QZMEP2579775"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/2gv7JkV7pUYDY4nk2HJMFs"
+            },
+            "href": "https://api.spotify.com/v1/tracks/2gv7JkV7pUYDY4nk2HJMFs",
+            "id": "2gv7JkV7pUYDY4nk2HJMFs",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Folkstep",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:2gv7JkV7pUYDY4nk2HJMFs",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/7a/14/3d/7a143d28-2d06-2943-6773-4d9baaa8608a/mzaf_16931814091229919154.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6vj0eM5OsQaAGRnlylapcl"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6vj0eM5OsQaAGRnlylapcl",
+                        "id": "6vj0eM5OsQaAGRnlylapcl",
+                        "name": "Hoenix",
+                        "type": "artist",
+                        "uri": "spotify:artist:6vj0eM5OsQaAGRnlylapcl"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/1LDOxUnqv8uf3A2lHpDWvm"
+                },
+                "href": "https://api.spotify.com/v1/albums/1LDOxUnqv8uf3A2lHpDWvm",
+                "id": "1LDOxUnqv8uf3A2lHpDWvm",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27332184375f232a56533001f69"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0232184375f232a56533001f69"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485132184375f232a56533001f69"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Introspection",
+                "release_date": "2019-02-01",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:1LDOxUnqv8uf3A2lHpDWvm"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6vj0eM5OsQaAGRnlylapcl"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6vj0eM5OsQaAGRnlylapcl",
+                    "id": "6vj0eM5OsQaAGRnlylapcl",
+                    "name": "Hoenix",
+                    "type": "artist",
+                    "uri": "spotify:artist:6vj0eM5OsQaAGRnlylapcl"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 381818,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "FR10S1926552"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/1NfwcxpcT9c4AA09KtabBb"
+            },
+            "href": "https://api.spotify.com/v1/tracks/1NfwcxpcT9c4AA09KtabBb",
+            "id": "1NfwcxpcT9c4AA09KtabBb",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Introspection",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:1NfwcxpcT9c4AA09KtabBb",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/04/41/65/044165db-08c4-d974-8b42-84a298eb31da/mzaf_15317941922117148694.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/3I7OkRBYoBCWs0sh1skx7w"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/3I7OkRBYoBCWs0sh1skx7w",
+                        "id": "3I7OkRBYoBCWs0sh1skx7w",
+                        "name": "Alf Wardhana",
+                        "type": "artist",
+                        "uri": "spotify:artist:3I7OkRBYoBCWs0sh1skx7w"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/2YSOeKBQLF59aNabvsGMWW"
+                },
+                "href": "https://api.spotify.com/v1/albums/2YSOeKBQLF59aNabvsGMWW",
+                "id": "2YSOeKBQLF59aNabvsGMWW",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b2734412d577118c3f918df476a1"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e024412d577118c3f918df476a1"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d000048514412d577118c3f918df476a1"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Rainy Days",
+                "release_date": "2019-08-23",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:2YSOeKBQLF59aNabvsGMWW"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3I7OkRBYoBCWs0sh1skx7w"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3I7OkRBYoBCWs0sh1skx7w",
+                    "id": "3I7OkRBYoBCWs0sh1skx7w",
+                    "name": "Alf Wardhana",
+                    "type": "artist",
+                    "uri": "spotify:artist:3I7OkRBYoBCWs0sh1skx7w"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 218863,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "QZFZ61980181"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/0ejF51HDSYwIX7vnehlOtD"
+            },
+            "href": "https://api.spotify.com/v1/tracks/0ejF51HDSYwIX7vnehlOtD",
+            "id": "0ejF51HDSYwIX7vnehlOtD",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Rainy Days",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:0ejF51HDSYwIX7vnehlOtD",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/9f/93/be/9f93bebb-2c7f-826e-d08b-83f19f822687/mzaf_946706447876638717.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/5rCTkyHZUIUcPwKwIz8YOg"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/5rCTkyHZUIUcPwKwIz8YOg",
+                        "id": "5rCTkyHZUIUcPwKwIz8YOg",
+                        "name": "aron!",
+                        "type": "artist",
+                        "uri": "spotify:artist:5rCTkyHZUIUcPwKwIz8YOg"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/7x6DjIjmEyNT1nYQXkMZWg"
+                },
+                "href": "https://api.spotify.com/v1/albums/7x6DjIjmEyNT1nYQXkMZWg",
+                "id": "7x6DjIjmEyNT1nYQXkMZWg",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27367642a2e886adf6aa6c772f9"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0267642a2e886adf6aa6c772f9"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485167642a2e886adf6aa6c772f9"
+                    }
+                ],
+                "is_playable": true,
+                "name": "cozy you",
+                "release_date": "2025-04-04",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:7x6DjIjmEyNT1nYQXkMZWg"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/5rCTkyHZUIUcPwKwIz8YOg"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/5rCTkyHZUIUcPwKwIz8YOg",
+                    "id": "5rCTkyHZUIUcPwKwIz8YOg",
+                    "name": "aron!",
+                    "type": "artist",
+                    "uri": "spotify:artist:5rCTkyHZUIUcPwKwIz8YOg"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 210734,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "USUG12502106"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/2HwsleCXo5xW2wnX1j6G4b"
+            },
+            "href": "https://api.spotify.com/v1/tracks/2HwsleCXo5xW2wnX1j6G4b",
+            "id": "2HwsleCXo5xW2wnX1j6G4b",
+            "is_local": false,
+            "is_playable": true,
+            "name": "cozy you",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:2HwsleCXo5xW2wnX1j6G4b",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/92/2d/64/922d64be-a300-a000-2b48-564b2338079b/mzaf_2131757108848942504.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/3y3wvhrKyp9SX3sZU1HREy"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/3y3wvhrKyp9SX3sZU1HREy",
+                        "id": "3y3wvhrKyp9SX3sZU1HREy",
+                        "name": "Cleo's Trademark",
+                        "type": "artist",
+                        "uri": "spotify:artist:3y3wvhrKyp9SX3sZU1HREy"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/2g8HkkRHOTf06noXe4X57h"
+                },
+                "href": "https://api.spotify.com/v1/albums/2g8HkkRHOTf06noXe4X57h",
+                "id": "2g8HkkRHOTf06noXe4X57h",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273d62905f6b2b937c56ec40a2e"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02d62905f6b2b937c56ec40a2e"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851d62905f6b2b937c56ec40a2e"
+                    }
+                ],
+                "is_playable": true,
+                "name": "wordt (the red project)",
+                "release_date": "2023-10-06",
+                "release_date_precision": "day",
+                "total_tracks": 8,
+                "type": "album",
+                "uri": "spotify:album:2g8HkkRHOTf06noXe4X57h"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3y3wvhrKyp9SX3sZU1HREy"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3y3wvhrKyp9SX3sZU1HREy",
+                    "id": "3y3wvhrKyp9SX3sZU1HREy",
+                    "name": "Cleo's Trademark",
+                    "type": "artist",
+                    "uri": "spotify:artist:3y3wvhrKyp9SX3sZU1HREy"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 138812,
+            "explicit": true,
+            "external_ids": {
+                "isrc": "QZTB42309428"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/1ivZWmQogZbYf6sapAh04G"
+            },
+            "href": "https://api.spotify.com/v1/tracks/1ivZWmQogZbYf6sapAh04G",
+            "id": "1ivZWmQogZbYf6sapAh04G",
+            "is_local": false,
+            "is_playable": true,
+            "name": "intro(spective)",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:1ivZWmQogZbYf6sapAh04G",
+            "previewUrl": null
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1SlrUQlFRfExXSCkHsQgBc"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1SlrUQlFRfExXSCkHsQgBc",
+                        "id": "1SlrUQlFRfExXSCkHsQgBc",
+                        "name": "JJ47",
+                        "type": "artist",
+                        "uri": "spotify:artist:1SlrUQlFRfExXSCkHsQgBc"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/69xcFpmqTOmFNOL08Bxyci"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/69xcFpmqTOmFNOL08Bxyci",
+                        "id": "69xcFpmqTOmFNOL08Bxyci",
+                        "name": "Talha Anjum",
+                        "type": "artist",
+                        "uri": "spotify:artist:69xcFpmqTOmFNOL08Bxyci"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/0Nl4kTPLk2ucrARvaf55zQ"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/0Nl4kTPLk2ucrARvaf55zQ",
+                        "id": "0Nl4kTPLk2ucrARvaf55zQ",
+                        "name": "Jokhay",
+                        "type": "artist",
+                        "uri": "spotify:artist:0Nl4kTPLk2ucrARvaf55zQ"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/3AFlMbilItENDLUJ8DJUgf"
+                },
+                "href": "https://api.spotify.com/v1/albums/3AFlMbilItENDLUJ8DJUgf",
+                "id": "3AFlMbilItENDLUJ8DJUgf",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27340e46b27d5b68f881a850358"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0240e46b27d5b68f881a850358"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485140e46b27d5b68f881a850358"
+                    }
+                ],
+                "is_playable": true,
+                "name": "1O Minute Drill",
+                "release_date": "2024-10-02",
+                "release_date_precision": "day",
+                "total_tracks": 3,
+                "type": "album",
+                "uri": "spotify:album:3AFlMbilItENDLUJ8DJUgf"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1SlrUQlFRfExXSCkHsQgBc"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1SlrUQlFRfExXSCkHsQgBc",
+                    "id": "1SlrUQlFRfExXSCkHsQgBc",
+                    "name": "JJ47",
+                    "type": "artist",
+                    "uri": "spotify:artist:1SlrUQlFRfExXSCkHsQgBc"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/69xcFpmqTOmFNOL08Bxyci"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/69xcFpmqTOmFNOL08Bxyci",
+                    "id": "69xcFpmqTOmFNOL08Bxyci",
+                    "name": "Talha Anjum",
+                    "type": "artist",
+                    "uri": "spotify:artist:69xcFpmqTOmFNOL08Bxyci"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/0Nl4kTPLk2ucrARvaf55zQ"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/0Nl4kTPLk2ucrARvaf55zQ",
+                    "id": "0Nl4kTPLk2ucrARvaf55zQ",
+                    "name": "Jokhay",
+                    "type": "artist",
+                    "uri": "spotify:artist:0Nl4kTPLk2ucrARvaf55zQ"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 249089,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "QZWFM2429619"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/06XApjv90edG4HHnDph03j"
+            },
+            "href": "https://api.spotify.com/v1/tracks/06XApjv90edG4HHnDph03j",
+            "id": "06XApjv90edG4HHnDph03j",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Rainy Nights",
+            "track_number": 3,
+            "type": "track",
+            "uri": "spotify:track:06XApjv90edG4HHnDph03j",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/f4/0c/8a/f40c8af0-fe48-ad39-74f3-0ac610651820/mzaf_17171458966080872304.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1EowJ1WwkMzkCkRomFhui7",
+                        "id": "1EowJ1WwkMzkCkRomFhui7",
+                        "name": "RADWIMPS",
+                        "type": "artist",
+                        "uri": "spotify:artist:1EowJ1WwkMzkCkRomFhui7"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/2UM9kTNJPoOHuN4yeDT54i"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/2UM9kTNJPoOHuN4yeDT54i",
+                        "id": "2UM9kTNJPoOHuN4yeDT54i",
+                        "name": "Kazuma Jinnouchi",
+                        "type": "artist",
+                        "uri": "spotify:artist:2UM9kTNJPoOHuN4yeDT54i"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/6Ar5HxNWXtvraqs7FI7bYq"
+                },
+                "href": "https://api.spotify.com/v1/albums/6Ar5HxNWXtvraqs7FI7bYq",
+                "id": "6Ar5HxNWXtvraqs7FI7bYq",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273bc16d1eefe86b079c8805f8f"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02bc16d1eefe86b079c8805f8f"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851bc16d1eefe86b079c8805f8f"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Suzume (Motion Picture Soundtrack)",
+                "release_date": "2022-11-10",
+                "release_date_precision": "day",
+                "total_tracks": 29,
+                "type": "album",
+                "uri": "spotify:album:6Ar5HxNWXtvraqs7FI7bYq"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1EowJ1WwkMzkCkRomFhui7"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1EowJ1WwkMzkCkRomFhui7",
+                    "id": "1EowJ1WwkMzkCkRomFhui7",
+                    "name": "RADWIMPS",
+                    "type": "artist",
+                    "uri": "spotify:artist:1EowJ1WwkMzkCkRomFhui7"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/0xFsJRSOYJmmuozISzreTR"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/0xFsJRSOYJmmuozISzreTR",
+                    "id": "0xFsJRSOYJmmuozISzreTR",
+                    "name": "Toaka",
+                    "type": "artist",
+                    "uri": "spotify:artist:0xFsJRSOYJmmuozISzreTR"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 238560,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "JPV972200075"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/1n1y2kFPISpF9WGD3JaFo5"
+            },
+            "href": "https://api.spotify.com/v1/tracks/1n1y2kFPISpF9WGD3JaFo5",
+            "id": "1n1y2kFPISpF9WGD3JaFo5",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Suzume",
+            "track_number": 27,
+            "type": "track",
+            "uri": "spotify:track:1n1y2kFPISpF9WGD3JaFo5",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview122/v4/c6/b8/2d/c6b82d20-f13d-a2fa-e337-19ccfc4a21dd/mzaf_705625446222665190.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                        "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                        "name": "Nujabes",
+                        "type": "artist",
+                        "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/0j7bgcyO7uKQtgpYwbbi7Q"
+                },
+                "href": "https://api.spotify.com/v1/albums/0j7bgcyO7uKQtgpYwbbi7Q",
+                "id": "0j7bgcyO7uKQtgpYwbbi7Q",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27310c73c3476e60630df210053"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0210c73c3476e60630df210053"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485110c73c3476e60630df210053"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Metaphorical Music",
+                "release_date": "2011-06-15",
+                "release_date_precision": "day",
+                "total_tracks": 15,
+                "type": "album",
+                "uri": "spotify:album:0j7bgcyO7uKQtgpYwbbi7Q"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                    "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                    "name": "Nujabes",
+                    "type": "artist",
+                    "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2Xavhsn8y9Yrr7N08OxvKF"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2Xavhsn8y9Yrr7N08OxvKF",
+                    "id": "2Xavhsn8y9Yrr7N08OxvKF",
+                    "name": "Cise Starr",
+                    "type": "artist",
+                    "uri": "spotify:artist:2Xavhsn8y9Yrr7N08OxvKF"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 199160,
+            "explicit": true,
+            "external_ids": {
+                "isrc": "JPH491605044"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/11nuN9xWUoKJNohMtyCoJg"
+            },
+            "href": "https://api.spotify.com/v1/tracks/11nuN9xWUoKJNohMtyCoJg",
+            "id": "11nuN9xWUoKJNohMtyCoJg",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Lady Brown",
+            "track_number": 3,
+            "type": "track",
+            "uri": "spotify:track:11nuN9xWUoKJNohMtyCoJg",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview125/v4/77/6c/ac/776cacd0-c525-e617-63a3-b46a93f15180/mzaf_7611419408810821350.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/2cjQTf2J5yCaNY8qHpW855"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/2cjQTf2J5yCaNY8qHpW855",
+                        "id": "2cjQTf2J5yCaNY8qHpW855",
+                        "name": "AUR",
+                        "type": "artist",
+                        "uri": "spotify:artist:2cjQTf2J5yCaNY8qHpW855"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/0KUWZOvXO6Uvsih3zDpwYa"
+                },
+                "href": "https://api.spotify.com/v1/albums/0KUWZOvXO6Uvsih3zDpwYa",
+                "id": "0KUWZOvXO6Uvsih3zDpwYa",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273d3e5ee2c289b1629b6b9ce8e"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02d3e5ee2c289b1629b6b9ce8e"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851d3e5ee2c289b1629b6b9ce8e"
+                    }
+                ],
+                "is_playable": true,
+                "name": "You paint me again “PURPLE”",
+                "release_date": "2025-12-12",
+                "release_date_precision": "day",
+                "total_tracks": 6,
+                "type": "album",
+                "uri": "spotify:album:0KUWZOvXO6Uvsih3zDpwYa"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2cjQTf2J5yCaNY8qHpW855"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2cjQTf2J5yCaNY8qHpW855",
+                    "id": "2cjQTf2J5yCaNY8qHpW855",
+                    "name": "AUR",
+                    "type": "artist",
+                    "uri": "spotify:artist:2cjQTf2J5yCaNY8qHpW855"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 72000,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "US39N2560421"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/57F8v6SV3CVca5Otqe0k3O"
+            },
+            "href": "https://api.spotify.com/v1/tracks/57F8v6SV3CVca5Otqe0k3O",
+            "id": "57F8v6SV3CVca5Otqe0k3O",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Intro",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:57F8v6SV3CVca5Otqe0k3O",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1f/d8/30/1fd83041-ca64-a14b-46bd-0a01547e8cdc/mzaf_7915027728076443864.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/3if8q00XuEyspVkdv755T1"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/3if8q00XuEyspVkdv755T1",
+                        "id": "3if8q00XuEyspVkdv755T1",
+                        "name": "PianoDreams",
+                        "type": "artist",
+                        "uri": "spotify:artist:3if8q00XuEyspVkdv755T1"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/3sHNA4WygxFlUzfVitpc03"
+                },
+                "href": "https://api.spotify.com/v1/albums/3sHNA4WygxFlUzfVitpc03",
+                "id": "3sHNA4WygxFlUzfVitpc03",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273d0b79578a84419c69dc352a5"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02d0b79578a84419c69dc352a5"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851d0b79578a84419c69dc352a5"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Smooth Piano Melodies for the Soul",
+                "release_date": "2022-12-16",
+                "release_date_precision": "day",
+                "total_tracks": 20,
+                "type": "album",
+                "uri": "spotify:album:3sHNA4WygxFlUzfVitpc03"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3if8q00XuEyspVkdv755T1"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3if8q00XuEyspVkdv755T1",
+                    "id": "3if8q00XuEyspVkdv755T1",
+                    "name": "PianoDreams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3if8q00XuEyspVkdv755T1"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 160826,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "DEAR42264236"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/5fq4DHy94aXUkYrSf4BJl8"
+            },
+            "href": "https://api.spotify.com/v1/tracks/5fq4DHy94aXUkYrSf4BJl8",
+            "id": "5fq4DHy94aXUkYrSf4BJl8",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Relaxing Tones",
+            "track_number": 16,
+            "type": "track",
+            "uri": "spotify:track:5fq4DHy94aXUkYrSf4BJl8",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview112/v4/4a/39/e4/4a39e4e8-6ffe-a209-9859-0d36e293e217/mzaf_14389869136720869324.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                        "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                        "name": "Nujabes",
+                        "type": "artist",
+                        "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/1cN1GECqXrHlPhLX7LGg3e"
+                },
+                "href": "https://api.spotify.com/v1/albums/1cN1GECqXrHlPhLX7LGg3e",
+                "id": "1cN1GECqXrHlPhLX7LGg3e",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273f3f585353a1f0220babd8e89"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02f3f585353a1f0220babd8e89"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851f3f585353a1f0220babd8e89"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Luv(sic) Hexalogy",
+                "release_date": "2015-12-09",
+                "release_date_precision": "day",
+                "total_tracks": 26,
+                "type": "album",
+                "uri": "spotify:album:1cN1GECqXrHlPhLX7LGg3e"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                    "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                    "name": "Nujabes",
+                    "type": "artist",
+                    "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 289026,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "JPH491605019"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3q1qGC38DEGXtYtm6LFecd"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3q1qGC38DEGXtYtm6LFecd",
+            "id": "3q1qGC38DEGXtYtm6LFecd",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Luv (sic)",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:3q1qGC38DEGXtYtm6LFecd",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/27/b3/94/27b394f9-9d85-bc2f-df57-94b6e7a6ebc9/mzaf_9380987449226528128.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6q83QeDrspxDVTOmYMAxS8"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6q83QeDrspxDVTOmYMAxS8",
+                        "id": "6q83QeDrspxDVTOmYMAxS8",
+                        "name": "Vaughn Harrison",
+                        "type": "artist",
+                        "uri": "spotify:artist:6q83QeDrspxDVTOmYMAxS8"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/02duehzy4k0kc3iDwoLVkr"
+                },
+                "href": "https://api.spotify.com/v1/albums/02duehzy4k0kc3iDwoLVkr",
+                "id": "02duehzy4k0kc3iDwoLVkr",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273d8f8ff125ad0ab68ed7d602b"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02d8f8ff125ad0ab68ed7d602b"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851d8f8ff125ad0ab68ed7d602b"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Hammock",
+                "release_date": "2023-01-27",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:02duehzy4k0kc3iDwoLVkr"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6q83QeDrspxDVTOmYMAxS8"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6q83QeDrspxDVTOmYMAxS8",
+                    "id": "6q83QeDrspxDVTOmYMAxS8",
+                    "name": "Vaughn Harrison",
+                    "type": "artist",
+                    "uri": "spotify:artist:6q83QeDrspxDVTOmYMAxS8"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 126144,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "SE5W32300295"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/7LTVGmS15JBwO11pTS4ykt"
+            },
+            "href": "https://api.spotify.com/v1/tracks/7LTVGmS15JBwO11pTS4ykt",
+            "id": "7LTVGmS15JBwO11pTS4ykt",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Hammock",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:7LTVGmS15JBwO11pTS4ykt",
+            "previewUrl": null
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/4Bv8nfuBV3hv0yVXXgYozl"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/4Bv8nfuBV3hv0yVXXgYozl",
+                        "id": "4Bv8nfuBV3hv0yVXXgYozl",
+                        "name": "Lonely Lies",
+                        "type": "artist",
+                        "uri": "spotify:artist:4Bv8nfuBV3hv0yVXXgYozl"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/4CVrlb0yLANRXabMcmIyVH"
+                },
+                "href": "https://api.spotify.com/v1/albums/4CVrlb0yLANRXabMcmIyVH",
+                "id": "4CVrlb0yLANRXabMcmIyVH",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273c1be212a374d0509cb9f4a7e"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02c1be212a374d0509cb9f4a7e"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851c1be212a374d0509cb9f4a7e"
+                    }
+                ],
+                "is_playable": true,
+                "name": "ambient resonance",
+                "release_date": "2024-01-19",
+                "release_date_precision": "day",
+                "total_tracks": 3,
+                "type": "album",
+                "uri": "spotify:album:4CVrlb0yLANRXabMcmIyVH"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/4Bv8nfuBV3hv0yVXXgYozl"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/4Bv8nfuBV3hv0yVXXgYozl",
+                    "id": "4Bv8nfuBV3hv0yVXXgYozl",
+                    "name": "Lonely Lies",
+                    "type": "artist",
+                    "uri": "spotify:artist:4Bv8nfuBV3hv0yVXXgYozl"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 114000,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "UKZGC2400252"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/1LOq9dhGdooVe9KwNFDwuA"
+            },
+            "href": "https://api.spotify.com/v1/tracks/1LOq9dhGdooVe9KwNFDwuA",
+            "id": "1LOq9dhGdooVe9KwNFDwuA",
+            "is_local": false,
+            "is_playable": true,
+            "name": "ambient resonance",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:1LOq9dhGdooVe9KwNFDwuA",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/1c/3b/29/1c3b297e-9f4f-b908-0c36-2f0b1b78370e/mzaf_785295453439959191.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1oPw456ljh3ZMotvBDOOrY"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1oPw456ljh3ZMotvBDOOrY",
+                        "id": "1oPw456ljh3ZMotvBDOOrY",
+                        "name": "Yagih Mael",
+                        "type": "artist",
+                        "uri": "spotify:artist:1oPw456ljh3ZMotvBDOOrY"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/1C6MV4L7bbD0XNxMHl503N"
+                },
+                "href": "https://api.spotify.com/v1/albums/1C6MV4L7bbD0XNxMHl503N",
+                "id": "1C6MV4L7bbD0XNxMHl503N",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273f435c670eebf670491209a0e"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02f435c670eebf670491209a0e"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851f435c670eebf670491209a0e"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Mood (Lofi)",
+                "release_date": "2021-11-10",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:1C6MV4L7bbD0XNxMHl503N"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1oPw456ljh3ZMotvBDOOrY"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1oPw456ljh3ZMotvBDOOrY",
+                    "id": "1oPw456ljh3ZMotvBDOOrY",
+                    "name": "Yagih Mael",
+                    "type": "artist",
+                    "uri": "spotify:artist:1oPw456ljh3ZMotvBDOOrY"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 162664,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "USJ3V2127638"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/6v8mSl4GZXok3Ebe9x4Jmr"
+            },
+            "href": "https://api.spotify.com/v1/tracks/6v8mSl4GZXok3Ebe9x4Jmr",
+            "id": "6v8mSl4GZXok3Ebe9x4Jmr",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Mood - Lofi",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:6v8mSl4GZXok3Ebe9x4Jmr",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/fd/2a/e2/fd2ae29a-38a9-6463-6767-263109b70519/mzaf_15490336809039617165.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/5hjdM6bOv0eF59xpVI00Mo"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/5hjdM6bOv0eF59xpVI00Mo",
+                        "id": "5hjdM6bOv0eF59xpVI00Mo",
+                        "name": "Chill And Study",
+                        "type": "artist",
+                        "uri": "spotify:artist:5hjdM6bOv0eF59xpVI00Mo"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/1rBFpHcLfj4POwmHMqu55v"
+                },
+                "href": "https://api.spotify.com/v1/albums/1rBFpHcLfj4POwmHMqu55v",
+                "id": "1rBFpHcLfj4POwmHMqu55v",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273c8061d3db1eedcc3352acd1b"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02c8061d3db1eedcc3352acd1b"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851c8061d3db1eedcc3352acd1b"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Sad Days",
+                "release_date": "2023-06-30",
+                "release_date_precision": "day",
+                "total_tracks": 21,
+                "type": "album",
+                "uri": "spotify:album:1rBFpHcLfj4POwmHMqu55v"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/5hjdM6bOv0eF59xpVI00Mo"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/5hjdM6bOv0eF59xpVI00Mo",
+                    "id": "5hjdM6bOv0eF59xpVI00Mo",
+                    "name": "Chill And Study",
+                    "type": "artist",
+                    "uri": "spotify:artist:5hjdM6bOv0eF59xpVI00Mo"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 153600,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "TCAHF2358672"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/0PmrP4CgyDgaAClpve7hCX"
+            },
+            "href": "https://api.spotify.com/v1/tracks/0PmrP4CgyDgaAClpve7hCX",
+            "id": "0PmrP4CgyDgaAClpve7hCX",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Ambience Lofi",
+            "track_number": 3,
+            "type": "track",
+            "uri": "spotify:track:0PmrP4CgyDgaAClpve7hCX",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview126/v4/21/25/4c/21254c8e-2996-93d9-1f00-f1d266d2c6a0/mzaf_3652502240629187992.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/0dgJbQ0bKPyUXco8hEXN7X"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/0dgJbQ0bKPyUXco8hEXN7X",
+                        "id": "0dgJbQ0bKPyUXco8hEXN7X",
+                        "name": "Øneheart",
+                        "type": "artist",
+                        "uri": "spotify:artist:0dgJbQ0bKPyUXco8hEXN7X"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6SdlxyPsQ3B0yYncFmDULP"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6SdlxyPsQ3B0yYncFmDULP",
+                        "id": "6SdlxyPsQ3B0yYncFmDULP",
+                        "name": "reidenshi",
+                        "type": "artist",
+                        "uri": "spotify:artist:6SdlxyPsQ3B0yYncFmDULP"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/4NRsGHlWBTl4rdLcq8CKcH"
+                },
+                "href": "https://api.spotify.com/v1/albums/4NRsGHlWBTl4rdLcq8CKcH",
+                "id": "4NRsGHlWBTl4rdLcq8CKcH",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273ed50c8fe9503fd8d73d82f9f"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02ed50c8fe9503fd8d73d82f9f"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851ed50c8fe9503fd8d73d82f9f"
+                    }
+                ],
+                "is_playable": true,
+                "name": "snowfall",
+                "release_date": "2022-01-14",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:4NRsGHlWBTl4rdLcq8CKcH"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/0dgJbQ0bKPyUXco8hEXN7X"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/0dgJbQ0bKPyUXco8hEXN7X",
+                    "id": "0dgJbQ0bKPyUXco8hEXN7X",
+                    "name": "Øneheart",
+                    "type": "artist",
+                    "uri": "spotify:artist:0dgJbQ0bKPyUXco8hEXN7X"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6SdlxyPsQ3B0yYncFmDULP"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6SdlxyPsQ3B0yYncFmDULP",
+                    "id": "6SdlxyPsQ3B0yYncFmDULP",
+                    "name": "reidenshi",
+                    "type": "artist",
+                    "uri": "spotify:artist:6SdlxyPsQ3B0yYncFmDULP"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 124065,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "QM3DF2191341"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/4xF4ZBGPZKxECeDFrqSAG4"
+            },
+            "href": "https://api.spotify.com/v1/tracks/4xF4ZBGPZKxECeDFrqSAG4",
+            "id": "4xF4ZBGPZKxECeDFrqSAG4",
+            "is_local": false,
+            "is_playable": true,
+            "name": "snowfall",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:4xF4ZBGPZKxECeDFrqSAG4",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/c8/29/1e/c8291e33-4bf8-f583-94ee-34d1e346144c/mzaf_13649498295430636129.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/0Q2Tc5yZFJpumLMc7Yz4e4"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/0Q2Tc5yZFJpumLMc7Yz4e4",
+                        "id": "0Q2Tc5yZFJpumLMc7Yz4e4",
+                        "name": "Tomppabeats",
+                        "type": "artist",
+                        "uri": "spotify:artist:0Q2Tc5yZFJpumLMc7Yz4e4"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/37Ps1JteM4ttrlIiqnw8mI"
+                },
+                "href": "https://api.spotify.com/v1/albums/37Ps1JteM4ttrlIiqnw8mI",
+                "id": "37Ps1JteM4ttrlIiqnw8mI",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273c6c30369e50d89c7e9b19b29"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02c6c30369e50d89c7e9b19b29"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851c6c30369e50d89c7e9b19b29"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Harbor",
+                "release_date": "2016-05-06",
+                "release_date_precision": "day",
+                "total_tracks": 38,
+                "type": "album",
+                "uri": "spotify:album:37Ps1JteM4ttrlIiqnw8mI"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/0Q2Tc5yZFJpumLMc7Yz4e4"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/0Q2Tc5yZFJpumLMc7Yz4e4",
+                    "id": "0Q2Tc5yZFJpumLMc7Yz4e4",
+                    "name": "Tomppabeats",
+                    "type": "artist",
+                    "uri": "spotify:artist:0Q2Tc5yZFJpumLMc7Yz4e4"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 95921,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "DEQ121639515"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/0OKYMc68Fb9kF5SeUhlFWp"
+            },
+            "href": "https://api.spotify.com/v1/tracks/0OKYMc68Fb9kF5SeUhlFWp",
+            "id": "0OKYMc68Fb9kF5SeUhlFWp",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Smoking at Midnight",
+            "track_number": 32,
+            "type": "track",
+            "uri": "spotify:track:0OKYMc68Fb9kF5SeUhlFWp",
+            "previewUrl": null
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/4Bv8nfuBV3hv0yVXXgYozl"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/4Bv8nfuBV3hv0yVXXgYozl",
+                        "id": "4Bv8nfuBV3hv0yVXXgYozl",
+                        "name": "Lonely Lies",
+                        "type": "artist",
+                        "uri": "spotify:artist:4Bv8nfuBV3hv0yVXXgYozl"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6PEnjhcHrk3FoMtUSHc3Jz"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6PEnjhcHrk3FoMtUSHc3Jz",
+                        "id": "6PEnjhcHrk3FoMtUSHc3Jz",
+                        "name": "GOLDKID$",
+                        "type": "artist",
+                        "uri": "spotify:artist:6PEnjhcHrk3FoMtUSHc3Jz"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/3qRdixqdC97Ap8Thbln8k9"
+                },
+                "href": "https://api.spotify.com/v1/albums/3qRdixqdC97Ap8Thbln8k9",
+                "id": "3qRdixqdC97Ap8Thbln8k9",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273f84cf03e00ca42a803d7930b"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02f84cf03e00ca42a803d7930b"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851f84cf03e00ca42a803d7930b"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Interlinked",
+                "release_date": "2024-11-21",
+                "release_date_precision": "day",
+                "total_tracks": 5,
+                "type": "album",
+                "uri": "spotify:album:3qRdixqdC97Ap8Thbln8k9"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/4Bv8nfuBV3hv0yVXXgYozl"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/4Bv8nfuBV3hv0yVXXgYozl",
+                    "id": "4Bv8nfuBV3hv0yVXXgYozl",
+                    "name": "Lonely Lies",
+                    "type": "artist",
+                    "uri": "spotify:artist:4Bv8nfuBV3hv0yVXXgYozl"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6PEnjhcHrk3FoMtUSHc3Jz"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6PEnjhcHrk3FoMtUSHc3Jz",
+                    "id": "6PEnjhcHrk3FoMtUSHc3Jz",
+                    "name": "GOLDKID$",
+                    "type": "artist",
+                    "uri": "spotify:artist:6PEnjhcHrk3FoMtUSHc3Jz"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 85997,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "CA5KR2504338"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3xcqBcQvWw8cqziV3egKUT"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3xcqBcQvWw8cqziV3egKUT",
+            "id": "3xcqBcQvWw8cqziV3egKUT",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Interlinked - Ambient",
+            "track_number": 5,
+            "type": "track",
+            "uri": "spotify:track:3xcqBcQvWw8cqziV3egKUT",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/d1/d0/cd/d1d0cda9-d432-3e05-fba2-9486f775d126/mzaf_13206280899555069094.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/2KxvnWERXm2kk2s89TyrRO"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/2KxvnWERXm2kk2s89TyrRO",
+                        "id": "2KxvnWERXm2kk2s89TyrRO",
+                        "name": "Lowfly",
+                        "type": "artist",
+                        "uri": "spotify:artist:2KxvnWERXm2kk2s89TyrRO"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/4UyG7cNtY6B7rwMgF0d7Ho"
+                },
+                "href": "https://api.spotify.com/v1/albums/4UyG7cNtY6B7rwMgF0d7Ho",
+                "id": "4UyG7cNtY6B7rwMgF0d7Ho",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273f042a6d958b6006b8e36bee7"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02f042a6d958b6006b8e36bee7"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851f042a6d958b6006b8e36bee7"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Cozy Evening Lo-fi",
+                "release_date": "2024-09-13",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:4UyG7cNtY6B7rwMgF0d7Ho"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2KxvnWERXm2kk2s89TyrRO"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2KxvnWERXm2kk2s89TyrRO",
+                    "id": "2KxvnWERXm2kk2s89TyrRO",
+                    "name": "Lowfly",
+                    "type": "artist",
+                    "uri": "spotify:artist:2KxvnWERXm2kk2s89TyrRO"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 151000,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "GB8KE2419257"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/7aKuYBZL73LYphkzymzpNW"
+            },
+            "href": "https://api.spotify.com/v1/tracks/7aKuYBZL73LYphkzymzpNW",
+            "id": "7aKuYBZL73LYphkzymzpNW",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Cozy Evening Lo-fi",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:7aKuYBZL73LYphkzymzpNW",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/4e/4c/40/4e4c40be-21d8-4ef6-b47d-8118a397d1d0/mzaf_5753522262229155716.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/5eIwTQpKoGAM6rFunUEd1T"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/5eIwTQpKoGAM6rFunUEd1T",
+                        "id": "5eIwTQpKoGAM6rFunUEd1T",
+                        "name": "Phlox Sage",
+                        "type": "artist",
+                        "uri": "spotify:artist:5eIwTQpKoGAM6rFunUEd1T"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/2Mq0dTijsXUQmTB0A5tPp8"
+                },
+                "href": "https://api.spotify.com/v1/albums/2Mq0dTijsXUQmTB0A5tPp8",
+                "id": "2Mq0dTijsXUQmTB0A5tPp8",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273ea79cb74edd7d1659b59a8a3"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02ea79cb74edd7d1659b59a8a3"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851ea79cb74edd7d1659b59a8a3"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Introspective",
+                "release_date": "2023-05-02",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:2Mq0dTijsXUQmTB0A5tPp8"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/5eIwTQpKoGAM6rFunUEd1T"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/5eIwTQpKoGAM6rFunUEd1T",
+                    "id": "5eIwTQpKoGAM6rFunUEd1T",
+                    "name": "Phlox Sage",
+                    "type": "artist",
+                    "uri": "spotify:artist:5eIwTQpKoGAM6rFunUEd1T"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 131411,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "SE4RG2303772"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/7d1CXUTMlMxmBWz3Mwsdvk"
+            },
+            "href": "https://api.spotify.com/v1/tracks/7d1CXUTMlMxmBWz3Mwsdvk",
+            "id": "7d1CXUTMlMxmBWz3Mwsdvk",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Introspective",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:7d1CXUTMlMxmBWz3Mwsdvk",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/9d/0e/c0/9d0ec09d-c137-4717-c13d-6c5cf91fbeec/mzaf_5651836440432851688.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                        "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                        "name": "Nujabes",
+                        "type": "artist",
+                        "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/2267JWMfKfqwPLNYkfDOl2"
+                },
+                "href": "https://api.spotify.com/v1/albums/2267JWMfKfqwPLNYkfDOl2",
+                "id": "2267JWMfKfqwPLNYkfDOl2",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27391d1fcb64e6f615f76213c48"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0291d1fcb64e6f615f76213c48"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485191d1fcb64e6f615f76213c48"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Kei Nishikori meets Nujabes",
+                "release_date": "2016-02-26",
+                "release_date_precision": "day",
+                "total_tracks": 17,
+                "type": "album",
+                "uri": "spotify:album:2267JWMfKfqwPLNYkfDOl2"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3Rq3YOF9YG9YfCWD4D56RZ"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3Rq3YOF9YG9YfCWD4D56RZ",
+                    "id": "3Rq3YOF9YG9YfCWD4D56RZ",
+                    "name": "Nujabes",
+                    "type": "artist",
+                    "uri": "spotify:artist:3Rq3YOF9YG9YfCWD4D56RZ"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 248000,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "JPH491605033"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3d9GBklH58z0TKCv0oryxU"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3d9GBklH58z0TKCv0oryxU",
+            "id": "3d9GBklH58z0TKCv0oryxU",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Counting Stars",
+            "track_number": 15,
+            "type": "track",
+            "uri": "spotify:track:3d9GBklH58z0TKCv0oryxU",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/70/db/ad/70dbade0-988e-86a6-a94b-b3ba00e974ca/mzaf_904495725141495205.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1BDPkykZVsiQP2OLhJvAr9"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1BDPkykZVsiQP2OLhJvAr9",
+                        "id": "1BDPkykZVsiQP2OLhJvAr9",
+                        "name": "Audio Sculptor",
+                        "type": "artist",
+                        "uri": "spotify:artist:1BDPkykZVsiQP2OLhJvAr9"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/40uUX5soGKQwwjuslFbsgS"
+                },
+                "href": "https://api.spotify.com/v1/albums/40uUX5soGKQwwjuslFbsgS",
+                "id": "40uUX5soGKQwwjuslFbsgS",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b27398f25c90b13230b17f98125b"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e0298f25c90b13230b17f98125b"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d0000485198f25c90b13230b17f98125b"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Hammock",
+                "release_date": "2026-04-24",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:40uUX5soGKQwwjuslFbsgS"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1BDPkykZVsiQP2OLhJvAr9"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1BDPkykZVsiQP2OLhJvAr9",
+                    "id": "1BDPkykZVsiQP2OLhJvAr9",
+                    "name": "Audio Sculptor",
+                    "type": "artist",
+                    "uri": "spotify:artist:1BDPkykZVsiQP2OLhJvAr9"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 136615,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "SE69N2508329"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/4Tdq55uf4F1XpT8593BYJS"
+            },
+            "href": "https://api.spotify.com/v1/tracks/4Tdq55uf4F1XpT8593BYJS",
+            "id": "4Tdq55uf4F1XpT8593BYJS",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Hammock",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:4Tdq55uf4F1XpT8593BYJS",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/60/d6/bc/60d6bca3-ece9-c3ce-da5c-e1ac6160a784/mzaf_8166466487776723570.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/7CoZkWIMHrAfVllUrTNRvE"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/7CoZkWIMHrAfVllUrTNRvE",
+                        "id": "7CoZkWIMHrAfVllUrTNRvE",
+                        "name": "Shivi",
+                        "type": "artist",
+                        "uri": "spotify:artist:7CoZkWIMHrAfVllUrTNRvE"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/0kja6sFd8iQGox9khkgnb6"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/0kja6sFd8iQGox9khkgnb6",
+                        "id": "0kja6sFd8iQGox9khkgnb6",
+                        "name": "Official Bhagat",
+                        "type": "artist",
+                        "uri": "spotify:artist:0kja6sFd8iQGox9khkgnb6"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/1E82LpubWYLhw6BgnQJFf0"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/1E82LpubWYLhw6BgnQJFf0",
+                        "id": "1E82LpubWYLhw6BgnQJFf0",
+                        "name": "BB",
+                        "type": "artist",
+                        "uri": "spotify:artist:1E82LpubWYLhw6BgnQJFf0"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/6HbsK0aw4akV60V8jAqWhr"
+                },
+                "href": "https://api.spotify.com/v1/albums/6HbsK0aw4akV60V8jAqWhr",
+                "id": "6HbsK0aw4akV60V8jAqWhr",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273f5dca746679020a4b9cc43b1"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02f5dca746679020a4b9cc43b1"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851f5dca746679020a4b9cc43b1"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Mellow",
+                "release_date": "2026-06-05",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:6HbsK0aw4akV60V8jAqWhr"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/7CoZkWIMHrAfVllUrTNRvE"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/7CoZkWIMHrAfVllUrTNRvE",
+                    "id": "7CoZkWIMHrAfVllUrTNRvE",
+                    "name": "Shivi",
+                    "type": "artist",
+                    "uri": "spotify:artist:7CoZkWIMHrAfVllUrTNRvE"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/0kja6sFd8iQGox9khkgnb6"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/0kja6sFd8iQGox9khkgnb6",
+                    "id": "0kja6sFd8iQGox9khkgnb6",
+                    "name": "Official Bhagat",
+                    "type": "artist",
+                    "uri": "spotify:artist:0kja6sFd8iQGox9khkgnb6"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/1E82LpubWYLhw6BgnQJFf0"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/1E82LpubWYLhw6BgnQJFf0",
+                    "id": "1E82LpubWYLhw6BgnQJFf0",
+                    "name": "BB",
+                    "type": "artist",
+                    "uri": "spotify:artist:1E82LpubWYLhw6BgnQJFf0"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 215454,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "QM7282607754"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/1g0gWAy9rFAsCRsDogb6Hi"
+            },
+            "href": "https://api.spotify.com/v1/tracks/1g0gWAy9rFAsCRsDogb6Hi",
+            "id": "1g0gWAy9rFAsCRsDogb6Hi",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Mellow",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:1g0gWAy9rFAsCRsDogb6Hi",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview118/v4/76/04/3f/76043f65-34ef-1a39-f730-9059df09f6f7/mzaf_3539027016308185897.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/5GkVAEDUPPeV3INTYATuzc"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/5GkVAEDUPPeV3INTYATuzc",
+                        "id": "5GkVAEDUPPeV3INTYATuzc",
+                        "name": "Chris Wayne",
+                        "type": "artist",
+                        "uri": "spotify:artist:5GkVAEDUPPeV3INTYATuzc"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/2wPsNCwhEGb0KvChZ5DD52"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/2wPsNCwhEGb0KvChZ5DD52",
+                        "id": "2wPsNCwhEGb0KvChZ5DD52",
+                        "name": "K. J. Yesudas",
+                        "type": "artist",
+                        "uri": "spotify:artist:2wPsNCwhEGb0KvChZ5DD52"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/55UIGf5fv42stNInbzRQq5"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/55UIGf5fv42stNInbzRQq5",
+                        "id": "55UIGf5fv42stNInbzRQq5",
+                        "name": "Sujatha Mohan",
+                        "type": "artist",
+                        "uri": "spotify:artist:55UIGf5fv42stNInbzRQq5"
+                    },
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/4gWEyye0fFtfrZqTkxe8Vq"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/4gWEyye0fFtfrZqTkxe8Vq",
+                        "id": "4gWEyye0fFtfrZqTkxe8Vq",
+                        "name": "SMXI",
+                        "type": "artist",
+                        "uri": "spotify:artist:4gWEyye0fFtfrZqTkxe8Vq"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/2eZkCfc3ivji9OGstjoQO7"
+                },
+                "href": "https://api.spotify.com/v1/albums/2eZkCfc3ivji9OGstjoQO7",
+                "id": "2eZkCfc3ivji9OGstjoQO7",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273c5722270c663b56903756c87"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02c5722270c663b56903756c87"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851c5722270c663b56903756c87"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Ambadippayyukal - Chillhop",
+                "release_date": "2025-05-22",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:2eZkCfc3ivji9OGstjoQO7"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/5GkVAEDUPPeV3INTYATuzc"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/5GkVAEDUPPeV3INTYATuzc",
+                    "id": "5GkVAEDUPPeV3INTYATuzc",
+                    "name": "Chris Wayne",
+                    "type": "artist",
+                    "uri": "spotify:artist:5GkVAEDUPPeV3INTYATuzc"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2wPsNCwhEGb0KvChZ5DD52"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2wPsNCwhEGb0KvChZ5DD52",
+                    "id": "2wPsNCwhEGb0KvChZ5DD52",
+                    "name": "K. J. Yesudas",
+                    "type": "artist",
+                    "uri": "spotify:artist:2wPsNCwhEGb0KvChZ5DD52"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/55UIGf5fv42stNInbzRQq5"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/55UIGf5fv42stNInbzRQq5",
+                    "id": "55UIGf5fv42stNInbzRQq5",
+                    "name": "Sujatha Mohan",
+                    "type": "artist",
+                    "uri": "spotify:artist:55UIGf5fv42stNInbzRQq5"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/4gWEyye0fFtfrZqTkxe8Vq"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/4gWEyye0fFtfrZqTkxe8Vq",
+                    "id": "4gWEyye0fFtfrZqTkxe8Vq",
+                    "name": "SMXI",
+                    "type": "artist",
+                    "uri": "spotify:artist:4gWEyye0fFtfrZqTkxe8Vq"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 197238,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "INSM32500038"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/49svGkmibuUlgVbOz8YyDP"
+            },
+            "href": "https://api.spotify.com/v1/tracks/49svGkmibuUlgVbOz8YyDP",
+            "id": "49svGkmibuUlgVbOz8YyDP",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Ambadippayyukal - Chillhop",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:49svGkmibuUlgVbOz8YyDP",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/c7/fe/88/c7fe88e9-39b0-279d-08a3-2691152ff818/mzaf_9727889273355300006.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/2IOLCN85GDJVu0Xe8HDNKp"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/2IOLCN85GDJVu0Xe8HDNKp",
+                        "id": "2IOLCN85GDJVu0Xe8HDNKp",
+                        "name": "Kai Tanaka",
+                        "type": "artist",
+                        "uri": "spotify:artist:2IOLCN85GDJVu0Xe8HDNKp"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/0Ai4wLLGhmAFCVK45cJwmu"
+                },
+                "href": "https://api.spotify.com/v1/albums/0Ai4wLLGhmAFCVK45cJwmu",
+                "id": "0Ai4wLLGhmAFCVK45cJwmu",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b2739b381b6812e41ff6526b3449"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e029b381b6812e41ff6526b3449"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d000048519b381b6812e41ff6526b3449"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Hammock",
+                "release_date": "2025-08-08",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:0Ai4wLLGhmAFCVK45cJwmu"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2IOLCN85GDJVu0Xe8HDNKp"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2IOLCN85GDJVu0Xe8HDNKp",
+                    "id": "2IOLCN85GDJVu0Xe8HDNKp",
+                    "name": "Kai Tanaka",
+                    "type": "artist",
+                    "uri": "spotify:artist:2IOLCN85GDJVu0Xe8HDNKp"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 68328,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "QT4K42515868"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3iuNMKs5C1SBIVypGj2syB"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3iuNMKs5C1SBIVypGj2syB",
+            "id": "3iuNMKs5C1SBIVypGj2syB",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Hammock",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:3iuNMKs5C1SBIVypGj2syB",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/34/8d/b6/348db694-f2ba-903e-2fa8-c963c4299b98/mzaf_12770452013182565605.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/2Or8PQp1nSscZ2gnIkx17E"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/2Or8PQp1nSscZ2gnIkx17E",
+                        "id": "2Or8PQp1nSscZ2gnIkx17E",
+                        "name": "Likko Sol",
+                        "type": "artist",
+                        "uri": "spotify:artist:2Or8PQp1nSscZ2gnIkx17E"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/5vUw31uxjtckjCMqrCQ09p"
+                },
+                "href": "https://api.spotify.com/v1/albums/5vUw31uxjtckjCMqrCQ09p",
+                "id": "5vUw31uxjtckjCMqrCQ09p",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b2732d34f85961140be705583458"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e022d34f85961140be705583458"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d000048512d34f85961140be705583458"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Cozy Chesnut Dreams",
+                "release_date": "2025-02-16",
+                "release_date_precision": "day",
+                "total_tracks": 1,
+                "type": "album",
+                "uri": "spotify:album:5vUw31uxjtckjCMqrCQ09p"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/2Or8PQp1nSscZ2gnIkx17E"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/2Or8PQp1nSscZ2gnIkx17E",
+                    "id": "2Or8PQp1nSscZ2gnIkx17E",
+                    "name": "Likko Sol",
+                    "type": "artist",
+                    "uri": "spotify:artist:2Or8PQp1nSscZ2gnIkx17E"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 270500,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "QZAKB2456870"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3eL5FsGnbgNY7ygd5JKuHm"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3eL5FsGnbgNY7ygd5JKuHm",
+            "id": "3eL5FsGnbgNY7ygd5JKuHm",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Cozy Chesnut Dreams",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:3eL5FsGnbgNY7ygd5JKuHm",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/92/20/69/9220697e-40c7-f439-202e-fa177511566e/mzaf_16438647997140516260.plus.aac.p.m4a"
+        },
+        {
+            "album": {
+                "album_type": "album",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/6rcXZpBn9xgjCFcA6lPLm1"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/6rcXZpBn9xgjCFcA6lPLm1",
+                        "id": "6rcXZpBn9xgjCFcA6lPLm1",
+                        "name": "BoDleasons",
+                        "type": "artist",
+                        "uri": "spotify:artist:6rcXZpBn9xgjCFcA6lPLm1"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/1IBLslSUtW0c7FQiRab0i8"
+                },
+                "href": "https://api.spotify.com/v1/albums/1IBLslSUtW0c7FQiRab0i8",
+                "id": "1IBLslSUtW0c7FQiRab0i8",
+                "images": [
+                    {
+                        "height": 640,
+                        "width": 640,
+                        "url": "https://i.scdn.co/image/ab67616d0000b273518b841fa612a6a8fdcba114"
+                    },
+                    {
+                        "height": 300,
+                        "width": 300,
+                        "url": "https://i.scdn.co/image/ab67616d00001e02518b841fa612a6a8fdcba114"
+                    },
+                    {
+                        "height": 64,
+                        "width": 64,
+                        "url": "https://i.scdn.co/image/ab67616d00004851518b841fa612a6a8fdcba114"
+                    }
+                ],
+                "is_playable": true,
+                "name": "Acoustic Indie Folk",
+                "release_date": "2023-07-26",
+                "release_date_precision": "day",
+                "total_tracks": 13,
+                "type": "album",
+                "uri": "spotify:album:1IBLslSUtW0c7FQiRab0i8"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6rcXZpBn9xgjCFcA6lPLm1"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6rcXZpBn9xgjCFcA6lPLm1",
+                    "id": "6rcXZpBn9xgjCFcA6lPLm1",
+                    "name": "BoDleasons",
+                    "type": "artist",
+                    "uri": "spotify:artist:6rcXZpBn9xgjCFcA6lPLm1"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 138108,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "GX3HH2361237"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/0kDKHgZ4tzkfug3R0n4GdS"
+            },
+            "href": "https://api.spotify.com/v1/tracks/0kDKHgZ4tzkfug3R0n4GdS",
+            "id": "0kDKHgZ4tzkfug3R0n4GdS",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Indie Folk",
+            "track_number": 5,
+            "type": "track",
+            "uri": "spotify:track:0kDKHgZ4tzkfug3R0n4GdS",
+            "previewUrl": "https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/5f/96/c4/5f96c452-d905-8489-23eb-f14e30413edc/mzaf_11291498077541442278.plus.aac.p.m4a"
+        }
+    ]
+}

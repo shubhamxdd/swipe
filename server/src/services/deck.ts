@@ -43,8 +43,8 @@ export function buildSearchQueries(seeds: {
   const queries: string[] = [];
 
   for (const genre of seeds.genres.slice(0, 3)) {
-    const q = `genre:"${genre}"`;
-    queries.push(seeds.era ? `${q} year:${seeds.era}` : q);
+    const q = seeds.era ? `${genre} ${seeds.era}` : genre;
+    queries.push(q);
   }
 
   for (const mood of seeds.moods.slice(0, 5)) {
@@ -52,7 +52,7 @@ export function buildSearchQueries(seeds: {
   }
 
   for (const artist of seeds.artists.slice(0, 3)) {
-    queries.push(`artist:"${artist}"`);
+    queries.push(artist);
   }
 
   return queries;

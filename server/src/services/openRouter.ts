@@ -60,6 +60,12 @@ async function chatCompletion(
   return data.choices[0].message.content;
 }
 
+function extractJSON(text: string): string {
+  const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (jsonMatch) return jsonMatch[1].trim();
+  return text.trim();
+}
+
 export async function interpretTheme(theme: string): Promise<LLMSeedResponse> {
   const content = await chatCompletion(
     [
@@ -69,7 +75,7 @@ export async function interpretTheme(theme: string): Promise<LLMSeedResponse> {
     { type: 'json_object' },
   );
 
-  const parsed = JSON.parse(content);
+  const parsed = JSON.parse(extractJSON(content));
 
   return {
     genres: parsed.genres ?? [],
@@ -95,5 +101,5 @@ export async function generateFunFacts(
     },
   ]);
 
-  return JSON.parse(content);
+  return JSON.parse(extractJSON(content));
 }

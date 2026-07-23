@@ -35,7 +35,7 @@ export async function getMe(accessToken: string): Promise<SpotifyUser> {
 export async function searchTracks(
   accessToken: string,
   query: string,
-  limit = 20,
+  limit = 10,
 ): Promise<SpotifyTrack[]> {
   const data = await fetchSpotify<{
     tracks: { items: SpotifyTrack[] };
@@ -46,11 +46,11 @@ export async function searchTracks(
 
 export async function createPlaylist(
   accessToken: string,
-  userId: string,
+  _userId: string,
   name: string,
   description?: string,
 ): Promise<{ id: string; uri: string; external_urls: { spotify: string } }> {
-  const res = await fetch(`${SPOTIFY_API}/users/${userId}/playlists`, {
+  const res = await fetch(`${SPOTIFY_API}/me/playlists`, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -79,7 +79,7 @@ export async function addTracksToPlaylist(
   for (let i = 0; i < trackUris.length; i += 100) {
     const batch = trackUris.slice(i, i + 100);
 
-    const res = await fetch(`${SPOTIFY_API}/playlists/${playlistId}/tracks`, {
+    const res = await fetch(`${SPOTIFY_API}/playlists/${playlistId}/items`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -98,7 +98,7 @@ export async function addTracksToPlaylist(
 export async function parallelSearch(
   accessToken: string,
   queries: string[],
-  limit = 20,
+  limit = 10,
 ): Promise<SpotifyTrack[]> {
   const allTracks: SpotifyTrack[] = [];
 
