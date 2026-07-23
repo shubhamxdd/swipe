@@ -34,7 +34,14 @@ router.post('/', async (req, res, next) => {
 
     if (existingPlaylistId) {
       playlistId = existingPlaylistId;
-      const existingIds = await getPlaylistTrackIds(accessToken, playlistId);
+
+      let existingIds: string[] = [];
+      try {
+        existingIds = await getPlaylistTrackIds(accessToken, playlistId);
+      } catch {
+        console.warn('Could not read existing playlist tracks — skipping duplicate check');
+      }
+
       const existingSet = new Set(existingIds);
       finalTrackIds = track_ids.filter((id) => !existingSet.has(id));
 
