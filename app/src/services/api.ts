@@ -19,7 +19,7 @@ async function request<T>(
   return res.json();
 }
 
-export function getAuthUrl(): Promise<{ url: string }> {
+export function getAuthUrl(): Promise<{ url: string; code_verifier: string }> {
   return request('/api/auth/url');
 }
 

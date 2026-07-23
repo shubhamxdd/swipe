@@ -4,23 +4,31 @@ Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-Frontend implementation — Expo SDK upgraded 52→57, expo-av → expo-audio
+Frontend reimplementation on Expo SDK 57 (fresh scaffold).
 
 ## Current Goal
 
-Expo SDK upgraded to latest version with all migration steps applied.
+All core SwipeMix frontend features wired into fresh SDK 57 template.
 
 ## Completed
 
-- **Expo SDK upgrade 52→57**: `expo@~52.0.0` → `^57.0.8`, React 18.3.1 → 19.2.3, React Native 0.76.7 → 0.86.0
-- **Package updates**: All Expo packages updated to SDK 57 compatible versions, `lucide-react-native` 0.460→1.26 (React 19 support), TypeScript 5.3→6.0
-- **expo-av → expo-audio migration**: SwipeScreen now uses `useAudioPlayer` + `useAudioPlayerStatus` hooks instead of `Audio.Sound.createAsync`
-- **Reanimated 3→4**: Babel plugin changed from `react-native-reanimated/plugin` to `react-native-worklets/plugin`
-- **app.json**: Removed `newArchEnabled` (default), added `experiments.reactCompiler: true`, replaced `expo-av` plugin with `expo-audio`
-- **Removed deprecated packages**: `expo-av`, `expo-constants` removed from dependencies
-- **TypeScript**: Updated tsconfig to match Expo SDK 57 base, all TS errors resolved
-- **All expo-doctor checks pass** (20/20)
-- **Fix Expo Go crash**: Wrapped root layout in `GestureHandlerRootView` (required by react-native-gesture-handler v2)
+- **App nuked & rebuilt**: Removed old SDK-52-based `app/`, recreated with `create-expo-app@latest` (SDK 57). Monorepo restructured — `app/` no longer a root workspace member.
+- **Deps installed**: `expo-audio`, `expo-secure-store`, `expo-auth-session`, `zustand`, `lucide-react-native`, `@react-native-async-storage/async-storage`
+- **app.json**: Name/slug/scheme → SwipeMix, dark splash bg (#121212), added plugins (expo-audio, expo-secure-store, expo-router)
+- **babel.config.js**: Added `react-native-worklets/plugin` for Reanimated 4
+- **Theme system**: `colors.ts` (Spotify dark), `typography.ts`, `spacing.ts`
+- **Types**: `SpotifyTrack`, `ThemeResponse`, `PlaylistSaveResponse`
+- **API service**: `api.ts` — auth URL, token exchange, theme submission, playlist save
+- **Stores**: `authStore.ts` (SecureStore-persisted tokens), `deckStore.ts` (swipe deck state + recent themes)
+- **Components**: `SwipeCard.tsx` (reanimated pan gesture with SKIP/KEEP labels, spring physics), `ProgressBar.tsx`, `TrackRow.tsx`
+- **Routes**:
+  - `_layout.tsx` — GestureHandlerRootView + Stack navigator + StatusBar
+  - `index.tsx` — Login (WebBrowser OAuth flow), theme input, recent theme chips
+  - `swipe.tsx` — Card swiping with undo, progress bar, keep/skip buttons
+  - `review.tsx` — Kept-track list with remove, save to Spotify, start over
+  - `confirmation.tsx` — Success screen with open-in-Spotify + new mix button
+- **Cleaned up**: Removed all default Expo template components
+- **TypeScript**: `tsc --noEmit` passes cleanly
 
 ## In Progress
 
@@ -28,16 +36,15 @@ Expo SDK upgraded to latest version with all migration steps applied.
 
 ## Next Up
 
-**OAuth deep-link integration**
-- Wire the Spotify OAuth PKCE flow to the mobile app (generate PKCE on-device, open browser, handle redirect via expo-linking)
-- Test end-to-end flow on actual device
-- Fun facts async integration
-- Edge case handling (empty deck, no preview, network errors)
-- Build swipe card component with react-native-gesture-handler + reanimated
-- Wire to mock deck first, then to real backend
-- Home screen with theme input
-- Audio preview with expo-av
-- Basic error/loading states
+Per build order (PRD §11):
+
+1. **Wire OAuth end-to-end**: Test login flow on device — backend provides auth URL + code_verifier, frontend opens browser, handles redirect, exchanges code
+2. **Wire theme→deck pipeline**: Connect home screen submit → `POST /api/theme` → swipe screen displays real API results
+3. **Preview lookup**: Ensure expo-audio playback is wired into SwipeCard (preview button / auto-play)
+4. **Fun facts integration**: Batched LLM call, async delivery to card
+5. **Review screen**: Playlist save integration (currently has API call, needs end-to-end testing)
+6. **Polish pass**: Loading states, error states, empty-deck handling, edge cases
+7. **Cross-device testing**: iOS + Android
 
 ## Open Questions
 

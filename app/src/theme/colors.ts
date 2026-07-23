@@ -1,4 +1,5 @@
 export const colors = {
+  accent: { primary: '#1DB954' },
   bg: {
     base: '#121212',
     surface: '#1E1E1E',
@@ -10,17 +11,13 @@ export const colors = {
     secondary: '#B3B3B3',
     muted: '#727272',
   },
-  accent: {
-    primary: '#1DB954',
-    hover: '#1ED760',
+  border: '#333333',
+  surface: {
+    fact: '#1A1A2E',
   },
   state: {
     like: '#1DB954',
     skip: '#FF3B30',
+    undo: '#B3B3B3',
   },
-  border: 'rgba(255,255,255,0.08)',
-  overlay: 'rgba(0,0,0,0.6)',
-  surface: {
-    fact: '#282828',
-  },
-} as const;
+};

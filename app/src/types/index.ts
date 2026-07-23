@@ -1,34 +1,36 @@
+export interface SpotifyImage {
+  url: string;
+  height: number;
+  width: number;
+}
+
+export interface SpotifyArtist {
+  id: string;
+  name: string;
+}
+
+export interface SpotifyAlbum {
+  images: SpotifyImage[];
+  name: string;
+}
+
 export interface SpotifyTrack {
   id: string;
   name: string;
-  artists: { id: string; name: string }[];
-  album: {
-    id: string;
-    name: string;
-    images: { url: string; height: number; width: number }[];
-  };
-  duration_ms: number;
+  artists: SpotifyArtist[];
+  album: SpotifyAlbum;
   previewUrl: string | null;
+  uri: string;
 }
 
 export interface ThemeResponse {
-  theme: string;
-  playlistName: string;
   tracks: SpotifyTrack[];
+  playlistName: string;
+  theme: string;
 }
 
 export interface PlaylistSaveResponse {
-  id: string;
-  uri: string;
-  url: string;
+  playlistUrl: string;
+  playlistId: string;
   name: string;
-  trackCount: number;
-}
-
-export interface SwipeSession {
-  theme: string;
-  playlistName: string;
-  tracks: SpotifyTrack[];
-  keepPile: string[];
-  currentIndex: number;
 }

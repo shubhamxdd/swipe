@@ -2,7 +2,6 @@
   "name": "swipemix",
   "private": true,
   "workspaces": [
-    "server",
-    "app"
+    "server"
   ]
 }

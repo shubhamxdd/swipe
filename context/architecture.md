@@ -6,8 +6,8 @@
 |---|---|---|
 | Mobile framework | React Native + Expo (TypeScript) | Cross-platform app shell |
 | Swipe mechanics | react-native-gesture-handler + react-native-reanimated | Card swipe interaction |
-| Audio playback | expo-av | Preview clip playback |
-| Navigation | react-navigation | Screen routing |
+| Audio playback | expo-audio | Preview clip playback |
+| Navigation | expo-router | File-based routing |
 | Secure storage | expo-secure-store | OAuth refresh tokens |
 | State management | Zustand | Client-side state |
 | Backend runtime | Node.js + Express (TypeScript) | API server |

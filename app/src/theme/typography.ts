@@ -1,17 +1,46 @@
 import { Platform } from 'react-native';
 
 const fontFamily = Platform.select({
-  ios: 'Inter',
-  android: 'Inter',
+  ios: 'System',
+  android: 'Roboto',
   default: 'System',
 });
 
 export const typography = {
-  display: { fontFamily, fontWeight: '700' as const, fontSize: 24 },
-  trackTitle: { fontFamily, fontWeight: '700' as const, fontSize: 18 },
-  artistName: { fontFamily, fontWeight: '400' as const, fontSize: 14 },
-  body: { fontFamily, fontWeight: '400' as const, fontSize: 14 },
-  caption: { fontFamily, fontWeight: '500' as const, fontSize: 12 },
-  button: { fontFamily, fontWeight: '600' as const, fontSize: 14 },
-  input: { fontFamily, fontWeight: '400' as const, fontSize: 16 },
+  display: {
+    fontFamily,
+    fontSize: 28,
+    fontWeight: '700' as const,
+    letterSpacing: -0.5,
+  },
+  trackTitle: {
+    fontFamily,
+    fontSize: 18,
+    fontWeight: '600' as const,
+  },
+  artistName: {
+    fontFamily,
+    fontSize: 14,
+    fontWeight: '400' as const,
+  },
+  body: {
+    fontFamily,
+    fontSize: 16,
+    fontWeight: '400' as const,
+  },
+  button: {
+    fontFamily,
+    fontSize: 16,
+    fontWeight: '600' as const,
+  },
+  input: {
+    fontFamily,
+    fontSize: 16,
+    fontWeight: '400' as const,
+  },
+  caption: {
+    fontFamily,
+    fontSize: 13,
+    fontWeight: '400' as const,
+  },
 };

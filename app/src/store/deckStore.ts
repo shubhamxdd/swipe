@@ -9,7 +9,7 @@ interface DeckState {
   currentIndex: number;
   isLoading: boolean;
   error: string | null;
-
+  recentThemes: string[];
   setDeck: (theme: string, playlistName: string, tracks: SpotifyTrack[]) => void;
   swipeRight: () => void;
   swipeLeft: () => void;
@@ -30,8 +30,11 @@ export const useDeckStore = create<DeckState>((set, get) => ({
   currentIndex: 0,
   isLoading: false,
   error: null,
+  recentThemes: [],
 
   setDeck: (theme, playlistName, tracks) => {
+    const { recentThemes } = get();
+    const updated = [theme, ...recentThemes.filter((t) => t !== theme)].slice(0, 10);
     set({
       theme,
       playlistName,
@@ -39,6 +42,7 @@ export const useDeckStore = create<DeckState>((set, get) => ({
       keepPile: [],
       currentIndex: 0,
       error: null,
+      recentThemes: updated,
     });
   },
 

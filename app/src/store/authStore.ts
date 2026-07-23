@@ -7,7 +7,6 @@ interface AuthState {
   refreshToken: string | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-
   setTokens: (access: string, refresh: string) => Promise<void>;
   exchangeCode: (code: string, codeVerifier: string) => Promise<void>;
   refreshAccessToken: () => Promise<void>;
@@ -38,7 +37,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   refreshAccessToken: async () => {
     const refresh = get().refreshToken;
     if (!refresh) return;
-
     try {
       const tokens = await refreshToken(refresh);
       await SecureStore.setItemAsync(ACCESS_KEY, tokens.access_token);

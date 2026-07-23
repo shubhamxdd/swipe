@@ -1,50 +1,33 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { colors } from '../theme/colors';
-import { typography } from '../theme/typography';
-import { spacing } from '../theme/spacing';
+import { radii } from '../theme/spacing';
 
 interface ProgressBarProps {
   current: number;
   total: number;
 }
 
-export default function ProgressBar({ current, total }: ProgressBarProps) {
-  const progress = total > 0 ? current / total : 0;
+export function ProgressBar({ current, total }: ProgressBarProps) {
+  const fraction = total > 0 ? current / total : 0;
+  const pct = Math.min(fraction, 1);
 
   return (
     <View style={styles.container}>
-      <View style={styles.barBg}>
-        <View style={[styles.barFill, { width: `${progress * 100}%` }]} />
-      </View>
-      <Text style={styles.label}>
-        {current} of {total}
-      </Text>
+      <View style={[styles.fill, { width: `${pct * 100}%` }]} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-  },
-  barBg: {
-    flex: 1,
     height: 4,
-    backgroundColor: colors.bg.elevated,
-    borderRadius: 2,
+    backgroundColor: colors.bg.cardHighlight,
+    borderRadius: radii.sm,
     overflow: 'hidden',
   },
-  barFill: {
+  fill: {
     height: '100%',
     backgroundColor: colors.accent.primary,
-    borderRadius: 2,
-  },
-  label: {
-    ...typography.caption,
-    color: colors.text.secondary,
-    width: 60,
-    textAlign: 'right',
+    borderRadius: radii.sm,
   },
 });
