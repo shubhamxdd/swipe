@@ -15,13 +15,14 @@ export default function SwipeScreen() {
   const {
     tracks,
     currentIndex,
+    keepPile,
     swipeLeft,
     swipeRight,
     undo,
   } = useDeckStore();
 
   const isDone = currentIndex >= tracks.length;
-  const totalKept = tracks.length - currentIndex;
+  const totalKept = keepPile.length;
 
   const handleSwipeRight = useCallback(() => {
     swipeRight();

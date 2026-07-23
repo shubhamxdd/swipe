@@ -25,7 +25,7 @@ export default function ReviewScreen() {
     if (!accessToken || keptTracks.length === 0) return;
     setSaving(true);
     try {
-      const trackIds = keptTracks.map((t) => t.uri);
+      const trackIds = keptTracks.map((t) => t.id);
       const result = await savePlaylist(accessToken, playlistName || 'SwipeMix Playlist', trackIds);
       router.replace(`/confirmation?url=${encodeURIComponent(result.playlistUrl)}&name=${encodeURIComponent(result.name)}`);
     } catch {
