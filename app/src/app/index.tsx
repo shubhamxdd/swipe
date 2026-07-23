@@ -1,22 +1,24 @@
-import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, AppState } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import { Music, LogIn, Send } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
-import { getAuthUrl, submitTheme } from '../services/api';
+import { getAuthUrl, getTokens, submitTheme } from '../services/api';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
-
-const MOBILE_REDIRECT_URI = 'swipemix://auth/callback';
 
 export default function HomeScreen() {
   const router = useRouter();
   const [themeInput, setThemeInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  const authState = useRef<string | null>(null);
+  const appStateSubscription = useRef<any>(null);
 
   const {
     isAuthenticated,
@@ -26,22 +28,46 @@ export default function HomeScreen() {
   } = useAuthStore();
   const { setDeck, setError, recentThemes } = useDeckStore();
 
+  const pollTokens = useCallback(async (state: string) => {
+    const MAX_ATTEMPTS = 20;
+    const DELAY_MS = 1500;
+
+    for (let i = 0; i < MAX_ATTEMPTS; i++) {
+      await new Promise((r) => setTimeout(r, DELAY_MS));
+      try {
+        const tokens = await getTokens(state);
+        await setTokens(tokens.access_token, tokens.refresh_token);
+        return true;
+      } catch {
+        // not ready yet
+      }
+    }
+    return false;
+  }, [setTokens]);
+
+  useEffect(() => {
+    const sub = AppState.addEventListener('change', (nextState) => {
+      if (nextState === 'active' && authState.current) {
+        const state = authState.current;
+        authState.current = null;
+        setIsLoggingIn(true);
+        pollTokens(state).then((ok) => {
+          if (!ok) setError('Authentication timed out');
+          setIsLoggingIn(false);
+        });
+      }
+    });
+    appStateSubscription.current = sub;
+    return () => sub.remove();
+  }, [pollTokens, setError]);
+
   async function handleLogin() {
     try {
-      const { url } = await getAuthUrl();
-      const result = await WebBrowser.openAuthSessionAsync(url, MOBILE_REDIRECT_URI);
-
-      if (result.type === 'success' && result.url) {
-        const resultUrl = new URL(result.url);
-        const accessToken = resultUrl.searchParams.get('access_token');
-        const refreshToken = resultUrl.searchParams.get('refresh_token');
-        if (accessToken && refreshToken) {
-          await setTokens(accessToken, refreshToken);
-        } else {
-          setError('Failed to retrieve tokens from redirect');
-        }
-      }
+      const { url, state } = await getAuthUrl();
+      authState.current = state;
+      await WebBrowser.openBrowserAsync(url);
     } catch (err) {
+      authState.current = null;
       setError('Failed to connect to Spotify');
     }
   }
@@ -61,10 +87,15 @@ export default function HomeScreen() {
     }
   }
 
-  if (authLoading) {
+  if (authLoading || isLoggingIn) {
     return (
       <SafeAreaView style={styles.centered}>
         <ActivityIndicator size="large" color={colors.accent.primary} />
+        {isLoggingIn && (
+          <Text style={{ color: colors.text.secondary, marginTop: spacing.md }}>
+            Completing authentication...
+          </Text>
+        )}
       </SafeAreaView>
     );
   }

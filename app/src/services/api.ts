@@ -1,6 +1,7 @@
 import type { ThemeResponse, PlaylistSaveResponse } from '../types';
 
-const API_BASE = 'http://localhost:3000';
+// const API_BASE = 'http://localhost:3000';
+const API_BASE = 'https://environmental-arcuately-maxwell.ngrok-free.dev';
 
 async function request<T>(
   path: string,
@@ -19,8 +20,14 @@ async function request<T>(
   return res.json();
 }
 
-export function getAuthUrl(): Promise<{ url: string }> {
+export function getAuthUrl(): Promise<{ url: string; state: string }> {
   return request('/api/auth/url');
+}
+
+export function getTokens(
+  state: string,
+): Promise<{ access_token: string; refresh_token: string }> {
+  return request(`/api/auth/tokens?state=${encodeURIComponent(state)}`);
 }
 
 export function exchangeCode(
