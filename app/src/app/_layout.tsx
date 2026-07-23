@@ -3,6 +3,7 @@ import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
+import { setAudioModeAsync } from 'expo-audio';
 import { useAuthStore } from '../store/authStore';
 import { colors } from '../theme/colors';
 
@@ -11,6 +12,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     loadTokens();
+    setAudioModeAsync({ playsInSilentMode: true, shouldPlayInBackground: false });
   }, []);
 
   return (

@@ -1,10 +1,12 @@
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
   withSpring,
 } from 'react-native-reanimated';
+import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
+import { Play, Pause } from 'lucide-react-native';
 import type { SpotifyTrack } from '../types';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -58,12 +60,16 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
     });
 
   const imageUrl = track.album?.images?.[0]?.url;
+  const hasPreview = !!track.previewUrl;
 
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.card, animatedStyle]}>
         {imageUrl && (
-          <Image source={{ uri: imageUrl }} style={styles.image} />
+          <View>
+            <Image source={{ uri: imageUrl }} style={styles.image} />
+            {hasPreview && <PreviewButton source={track.previewUrl!} />}
+          </View>
         )}
         <View style={styles.info}>
           <Text style={styles.title} numberOfLines={1}>
@@ -87,6 +93,28 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
   );
 }
 
+function PreviewButton({ source }: { source: string }) {
+  const player = useAudioPlayer(source);
+  const status = useAudioPlayerStatus(player);
+
+  const isPlaying = status.playing;
+  const icon = isPlaying ? Pause : Play;
+
+  function toggle() {
+    if (isPlaying) {
+      player.pause();
+    } else {
+      player.play();
+    }
+  }
+
+  return (
+    <Pressable style={styles.previewButton} onPress={toggle}>
+      {icon({ size: 28, color: '#fff' })}
+    </Pressable>
+  );
+}
+
 const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
@@ -102,6 +130,22 @@ const styles = StyleSheet.create({
   image: {
     width: CARD_WIDTH,
     height: CARD_WIDTH,
+  },
+  previewButton: {
+    position: 'absolute',
+    bottom: spacing.md,
+    right: spacing.md,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: colors.accent.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   info: {
     padding: spacing.lg,
