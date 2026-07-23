@@ -1,6 +1,5 @@
-import { useRef } from 'react';
 import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
-import { GestureHandlerRootView, PanGestureHandler, State } from 'react-native-gesture-handler';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -33,44 +32,35 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
     ],
   }));
 
-  function handleGesture(event: any) {
-    translateX.value = event.nativeEvent.translationX;
-    const rotation = (event.nativeEvent.translationX / SCREEN_WIDTH) * 25;
-    rotate.value = `${rotation}deg`;
-  }
+  const gesture = Gesture.Pan()
+    .onUpdate((event) => {
+      translateX.value = event.translationX;
+      rotate.value = `${(event.translationX / SCREEN_WIDTH) * 25}deg`;
+    })
+    .onEnd((event) => {
+      const willSwipeRight =
+        translateX.value > SWIPE_THRESHOLD ||
+        (event.velocityX > 500 && translateX.value > 0);
+      const willSwipeLeft =
+        translateX.value < -SWIPE_THRESHOLD ||
+        (event.velocityX < -500 && translateX.value < 0);
 
-  function handleEnd(event: any) {
-    const velocityX = event.nativeEvent.velocityX;
-    const threshold = SWIPE_THRESHOLD;
-    const velocityThreshold = 500;
-
-    if (
-      translateX.value > threshold ||
-      (velocityX > velocityThreshold && translateX.value > 0)
-    ) {
-      translateX.value = withSpring(SCREEN_WIDTH * 1.5, { damping: 15 });
-      runOnJS(onSwipeRight)();
-    } else if (
-      translateX.value < -threshold ||
-      (velocityX < -velocityThreshold && translateX.value < 0)
-    ) {
-      translateX.value = withSpring(-SCREEN_WIDTH * 1.5, { damping: 15 });
-      runOnJS(onSwipeLeft)();
-    } else {
-      translateX.value = withSpring(0, { damping: 20 });
-      rotate.value = withSpring('0deg', { damping: 20 });
-    }
-  }
+      if (willSwipeRight) {
+        translateX.value = withSpring(SCREEN_WIDTH * 1.5, { damping: 15 });
+        runOnJS(onSwipeRight)();
+      } else if (willSwipeLeft) {
+        translateX.value = withSpring(-SCREEN_WIDTH * 1.5, { damping: 15 });
+        runOnJS(onSwipeLeft)();
+      } else {
+        translateX.value = withSpring(0, { damping: 20 });
+        rotate.value = withSpring('0deg', { damping: 20 });
+      }
+    });
 
   const imageUrl = track.album?.images?.[0]?.url;
 
   return (
-    <PanGestureHandler
-      onGestureEvent={handleGesture}
-      onHandlerStateChange={({ nativeEvent }) => {
-        if (nativeEvent.state === State.END) handleEnd({ nativeEvent });
-      }}
-    >
+    <GestureDetector gesture={gesture}>
       <Animated.View style={[styles.card, animatedStyle]}>
         {imageUrl && (
           <Image source={{ uri: imageUrl }} style={styles.image} />
@@ -93,7 +83,7 @@ export function SwipeCard({ track, onSwipeLeft, onSwipeRight }: SwipeCardProps) 
           </View>
         </View>
       </Animated.View>
-    </PanGestureHandler>
+    </GestureDetector>
   );
 }
 
