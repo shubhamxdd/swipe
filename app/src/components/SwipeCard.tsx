@@ -98,7 +98,6 @@ function PreviewButton({ source }: { source: string }) {
   const status = useAudioPlayerStatus(player);
 
   const isPlaying = status.playing;
-  const icon = isPlaying ? Pause : Play;
 
   function toggle() {
     if (isPlaying) {
@@ -110,7 +109,7 @@ function PreviewButton({ source }: { source: string }) {
 
   return (
     <Pressable style={styles.previewButton} onPress={toggle}>
-      {icon({ size: 28, color: '#fff' })}
+      {isPlaying ? <Pause size={28} color="#fff" /> : <Play size={28} color="#fff" />}
     </Pressable>
   );
 }
