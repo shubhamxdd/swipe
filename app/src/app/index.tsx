@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, ScrollView, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, ScrollView, Alert, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
-import { Music, LogIn, LogOut, Send, Sparkles, Clock, RotateCcw, Settings } from 'lucide-react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Music, LogIn, LogOut, Send, Sparkles, Clock, RotateCcw, Settings, Loader } from 'lucide-react-native';
 import { useAuthStore } from '../store/authStore';
 import { useDeckStore } from '../store/deckStore';
 import { useHistoryStore } from '../store/historyStore';
@@ -28,6 +29,22 @@ export default function HomeScreen() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [loadingMsgIndex, setLoadingMsgIndex] = useState(0);
+  const [isSuggesting, setIsSuggesting] = useState(false);
+  const suggestAnim = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (isSuggesting) {
+      const loop = Animated.loop(
+        Animated.sequence([
+          Animated.timing(suggestAnim, { toValue: 1, duration: 1500, useNativeDriver: true }),
+          Animated.timing(suggestAnim, { toValue: 0, duration: 1500, useNativeDriver: true }),
+        ]),
+      );
+      loop.start();
+      return () => loop.stop();
+    }
+    suggestAnim.setValue(0);
+  }, [isSuggesting]);
 
   const abortRef = useRef(false);
   const submitThemeRef = useRef('');
@@ -137,11 +154,14 @@ export default function HomeScreen() {
 
   async function handleAISuggest() {
     if (!accessToken) return;
+    setIsSuggesting(true);
     try {
       const { suggestion } = await suggestTheme(accessToken);
       setThemeInput(suggestion);
     } catch {
       setError('Failed to get suggestion');
+    } finally {
+      setIsSuggesting(false);
     }
   }
 
@@ -226,33 +246,53 @@ export default function HomeScreen() {
         )}
 
         <View style={styles.inputSection}>
-          <TextInput
-            style={styles.input}
-            placeholder="Describe a vibe, mood, or theme..."
-            placeholderTextColor={colors.text.muted}
-            value={themeInput}
-            onChangeText={setThemeInput}
-            autoCapitalize="none"
-            autoCorrect={false}
-            accessibilityLabel="Theme input"
-            accessibilityHint="Describe a vibe, mood, or theme for your playlist"
-          />
+          <View style={styles.inputWrapper}>
+            <TextInput
+              style={styles.input}
+              placeholder="Describe a vibe, mood, or theme..."
+              placeholderTextColor={colors.text.muted}
+              value={themeInput}
+              onChangeText={setThemeInput}
+              autoCapitalize="none"
+              autoCorrect={false}
+              editable={!isSuggesting}
+              accessibilityLabel="Theme input"
+              accessibilityHint="Describe a vibe, mood, or theme for your playlist"
+            />
+            {isSuggesting && (
+              <Animated.View style={[styles.inputGlow, { opacity: suggestAnim }]}>
+                <LinearGradient
+                  colors={['rgba(29,185,84,0.4)', 'rgba(29,185,84,0)', 'rgba(29,185,84,0.4)']}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  style={StyleSheet.absoluteFill}
+                />
+              </Animated.View>
+            )}
+          </View>
           <TouchableOpacity
-            style={[styles.submitButton, !accessToken && styles.submitDisabled]}
+            style={[styles.submitButton, (!accessToken || isSubmitting || isSuggesting) && styles.submitDisabled]}
             onPress={handleSubmit}
-            disabled={!accessToken || isSubmitting}
+            disabled={!accessToken || isSubmitting || isSuggesting}
             accessibilityRole="button"
             accessibilityLabel="Build my deck"
           >
             <Send size={20} color="#fff" />
           </TouchableOpacity>
           <TouchableOpacity
-            style={styles.aiButton}
+            style={[styles.aiButton, isSuggesting && styles.aiButtonActive]}
             onPress={handleAISuggest}
+            disabled={isSuggesting}
             accessibilityRole="button"
             accessibilityLabel="Suggest a random theme"
           >
-            <Sparkles size={20} color={colors.accent.primary} />
+            {isSuggesting ? (
+              <Animated.View style={{ opacity: suggestAnim }}>
+                <Loader size={20} color={colors.accent.primary} />
+              </Animated.View>
+            ) : (
+              <Sparkles size={20} color={colors.accent.primary} />
+            )}
           </TouchableOpacity>
         </View>
 
@@ -355,6 +395,8 @@ const styles = StyleSheet.create({
   },
   loadingText: { ...typography.body, color: colors.text.secondary, textAlign: 'center', flexShrink: 1 },
   inputSection: { flexDirection: 'row', gap: spacing.sm, marginBottom: spacing.lg },
+  inputWrapper: { flex: 1, position: 'relative' },
+  inputGlow: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: radii.md, overflow: 'hidden' },
   input: {
     flex: 1, height: 50, backgroundColor: colors.bg.surface, borderRadius: radii.md,
     paddingHorizontal: spacing.lg, color: colors.text.primary, ...typography.input,
@@ -367,6 +409,9 @@ const styles = StyleSheet.create({
   aiButton: {
     width: 50, height: 50, borderRadius: radii.md, backgroundColor: colors.bg.surface,
     alignItems: 'center', justifyContent: 'center',
+  },
+  aiButtonActive: {
+    borderWidth: 1, borderColor: colors.accent.primary,
   },
   quickMixButton: {
     alignItems: 'center', justifyContent: 'center',
