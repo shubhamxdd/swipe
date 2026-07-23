@@ -8,6 +8,7 @@ const envSchema = z.object({
   SPOTIFY_CLIENT_SECRET: z.string().min(1, 'SPOTIFY_CLIENT_SECRET is required'),
   OPENROUTER_API_KEY: z.string().min(1, 'OPENROUTER_API_KEY is required'),
   REDIRECT_URI: z.string().url('REDIRECT_URI must be a valid URL'),
+  OPENROUTER_MODEL: z.string().default('deepseek/deepseek-chat'),
   PORT: z.coerce.number().default(3000),
 });
 
