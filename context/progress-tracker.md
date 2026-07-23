@@ -20,6 +20,7 @@ Expo SDK upgraded to latest version with all migration steps applied.
 - **Removed deprecated packages**: `expo-av`, `expo-constants` removed from dependencies
 - **TypeScript**: Updated tsconfig to match Expo SDK 57 base, all TS errors resolved
 - **All expo-doctor checks pass** (20/20)
+- **Fix Expo Go crash**: Wrapped root layout in `GestureHandlerRootView` (required by react-native-gesture-handler v2)
 
 ## In Progress
 

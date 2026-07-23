@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useAuthStore } from '../src/store/authStore';
 import { View, ActivityIndicator } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { colors } from '../src/theme/colors';
 
 export default function RootLayout() {
@@ -22,7 +23,7 @@ export default function RootLayout() {
   }
 
   return (
-    <>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <StatusBar style="light" />
       <Stack
         screenOptions={{
@@ -36,6 +37,6 @@ export default function RootLayout() {
         <Stack.Screen name="review" />
         <Stack.Screen name="confirmation" />
       </Stack>
-    </>
+    </GestureHandlerRootView>
   );
 }
