@@ -136,8 +136,9 @@ export default function HomeScreen() {
   }
 
   async function handleAISuggest() {
+    if (!accessToken) return;
     try {
-      const { suggestion } = await suggestTheme();
+      const { suggestion } = await suggestTheme(accessToken);
       setThemeInput(suggestion);
     } catch {
       setError('Failed to get suggestion');

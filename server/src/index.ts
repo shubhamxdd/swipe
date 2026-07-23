@@ -16,16 +16,6 @@ app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', service: 'swipemix-server' });
 });
 
-import { suggestTheme } from './services/openRouter';
-app.get('/api/suggest-theme', async (_req, res, next) => {
-  try {
-    const suggestion = await suggestTheme();
-    res.json({ suggestion });
-  } catch (err) {
-    next(err);
-  }
-});
-
 app.use('/api/auth', authRoutes);
 app.use('/api/theme', requireAuth, themeRoutes);
 app.use('/api/playlist', requireAuth, playlistRoutes);

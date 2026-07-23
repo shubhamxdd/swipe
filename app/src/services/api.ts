@@ -108,6 +108,8 @@ export function checkHealth(): Promise<{ status: string }> {
   return request('/api/health');
 }
 
-export function suggestTheme(): Promise<{ suggestion: string }> {
-  return request('/api/suggest-theme');
+export function suggestTheme(accessToken: string): Promise<{ suggestion: string }> {
+  return request('/api/theme/suggest', {
+    headers: { Authorization: `Bearer ${accessToken}` },
+  });
 }
