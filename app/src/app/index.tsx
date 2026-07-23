@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, AppState } from 'react-native';
+import { useState, useRef } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
@@ -11,14 +11,16 @@ import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
 import { radii, spacing } from '../theme/spacing';
 
+const MAX_POLL_ATTEMPTS = 20;
+const POLL_DELAY_MS = 1500;
+
 export default function HomeScreen() {
   const router = useRouter();
   const [themeInput, setThemeInput] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
-  const authState = useRef<string | null>(null);
-  const appStateSubscription = useRef<any>(null);
+  const abortRef = useRef(false);
 
   const {
     isAuthenticated,
@@ -28,47 +30,33 @@ export default function HomeScreen() {
   } = useAuthStore();
   const { setDeck, setError, recentThemes } = useDeckStore();
 
-  const pollTokens = useCallback(async (state: string) => {
-    const MAX_ATTEMPTS = 20;
-    const DELAY_MS = 1500;
-
-    for (let i = 0; i < MAX_ATTEMPTS; i++) {
-      await new Promise((r) => setTimeout(r, DELAY_MS));
+  async function pollTokens(state: string): Promise<boolean> {
+    for (let i = 0; i < MAX_POLL_ATTEMPTS; i++) {
+      if (abortRef.current) return false;
+      await new Promise((r) => setTimeout(r, POLL_DELAY_MS));
       try {
         const tokens = await getTokens(state);
         await setTokens(tokens.access_token, tokens.refresh_token);
         return true;
       } catch {
-        // not ready yet
+        // tokens not ready yet
       }
     }
     return false;
-  }, [setTokens]);
-
-  useEffect(() => {
-    const sub = AppState.addEventListener('change', (nextState) => {
-      if (nextState === 'active' && authState.current) {
-        const state = authState.current;
-        authState.current = null;
-        setIsLoggingIn(true);
-        pollTokens(state).then((ok) => {
-          if (!ok) setError('Authentication timed out');
-          setIsLoggingIn(false);
-        });
-      }
-    });
-    appStateSubscription.current = sub;
-    return () => sub.remove();
-  }, [pollTokens, setError]);
+  }
 
   async function handleLogin() {
     try {
       const { url, state } = await getAuthUrl();
-      authState.current = state;
+      abortRef.current = false;
+      setIsLoggingIn(true);
       await WebBrowser.openBrowserAsync(url);
+      const ok = await pollTokens(state);
+      if (!ok && !abortRef.current) setError('Authentication timed out');
     } catch (err) {
-      authState.current = null;
       setError('Failed to connect to Spotify');
+    } finally {
+      setIsLoggingIn(false);
     }
   }
 
