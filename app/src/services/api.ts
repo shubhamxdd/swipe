@@ -109,5 +109,5 @@ export function checkHealth(): Promise<{ status: string }> {
 }
 
 export function suggestTheme(): Promise<{ suggestion: string }> {
-  return request('/api/theme/suggest');
+  return request('/api/suggest-theme');
 }
