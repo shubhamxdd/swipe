@@ -18,7 +18,7 @@ async function fetchSpotify<T>(
 
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`Spotify API error (${res.status}): ${err}`);
+    throw new Error(`Spotify API error (${res.status}) for ${url.toString()}: ${err}`);
   }
 
   return res.json() as Promise<T>;

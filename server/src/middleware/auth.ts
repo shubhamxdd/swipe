@@ -28,7 +28,8 @@ export async function requireAuth(
     req.accessToken = token;
     req.spotifyUser = { id: user.id, display_name: user.display_name };
     next();
-  } catch {
+  } catch (err) {
+    console.error('Auth middleware error:', err instanceof Error ? err.message : err);
     next(new AppError(401, 'TOKEN_INVALID', 'Access token is invalid or expired'));
   }
 }
