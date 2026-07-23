@@ -5,6 +5,7 @@ import { errorHandler } from './middleware/errorHandler';
 import { requireAuth } from './middleware/auth';
 import authRoutes from './routes/auth';
 import themeRoutes from './routes/theme';
+import playlistRoutes from './routes/playlist';
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get('/api/health', (_req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/theme', requireAuth, themeRoutes);
+app.use('/api/playlist', requireAuth, playlistRoutes);
 
 app.use(errorHandler);
 

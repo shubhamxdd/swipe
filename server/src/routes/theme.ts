@@ -3,6 +3,8 @@ import { z } from 'zod';
 import { interpretTheme } from '../services/openRouter';
 import { parallelSearch } from '../services/spotify';
 import { assembleDeck, buildSearchQueries } from '../services/deck';
+import { lookupPreview } from '../services/iTunes';
+import { previewUrlCache } from '../cache/index';
 import { AppError } from '../middleware/errorHandler';
 import type { LLMSeedResponse, SpotifyTrack } from '../types';
 
@@ -47,6 +49,44 @@ async function buildDeck(
   return { tracks: [], playlistName: seeds.playlistName };
 }
 
+async function enrichWithPreviews(
+  tracks: SpotifyTrack[],
+): Promise<(SpotifyTrack & { previewUrl: string | null })[]> {
+  const missing: { id: string; name: string; artist: string }[] = [];
+
+  const previews = new Map<string, string | null>();
+
+  for (const track of tracks) {
+    const cached = previewUrlCache.get(track.id);
+    if (cached !== undefined) {
+      previews.set(track.id, cached);
+    } else {
+      missing.push({
+        id: track.id,
+        name: track.name,
+        artist: track.artists[0]?.name ?? '',
+      });
+    }
+  }
+
+  const batchSize = 5;
+  for (let i = 0; i < missing.length; i += batchSize) {
+    const batch = missing.slice(i, i + batchSize);
+    const results = await Promise.all(
+      batch.map((t) => lookupPreview(t.name, t.artist)),
+    );
+    for (let j = 0; j < batch.length; j++) {
+      previews.set(batch[j].id, results[j]);
+      previewUrlCache.set(batch[j].id, results[j]);
+    }
+  }
+
+  return tracks.map((track) => ({
+    ...track,
+    previewUrl: previews.get(track.id) ?? null,
+  }));
+}
+
 router.post('/', async (req, res, next) => {
   try {
     const { theme } = themeSchema.parse(req.body);
@@ -59,10 +99,12 @@ router.post('/', async (req, res, next) => {
       return;
     }
 
+    const tracksWithPreviews = await enrichWithPreviews(tracks);
+
     res.json({
       theme,
       playlistName,
-      tracks,
+      tracks: tracksWithPreviews,
     });
   } catch (err) {
     if (err instanceof z.ZodError) {

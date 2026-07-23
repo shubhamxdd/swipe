@@ -44,6 +44,57 @@ export async function searchTracks(
   return data.tracks.items;
 }
 
+export async function createPlaylist(
+  accessToken: string,
+  userId: string,
+  name: string,
+  description?: string,
+): Promise<{ id: string; uri: string; external_urls: { spotify: string } }> {
+  const res = await fetch(`${SPOTIFY_API}/users/${userId}/playlists`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name,
+      description: description ?? 'Created with SwipeMix',
+      public: false,
+    }),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Spotify create playlist error (${res.status}): ${err}`);
+  }
+
+  return res.json() as Promise<{ id: string; uri: string; external_urls: { spotify: string } }>;
+}
+
+export async function addTracksToPlaylist(
+  accessToken: string,
+  playlistId: string,
+  trackUris: string[],
+): Promise<void> {
+  for (let i = 0; i < trackUris.length; i += 100) {
+    const batch = trackUris.slice(i, i + 100);
+
+    const res = await fetch(`${SPOTIFY_API}/playlists/${playlistId}/tracks`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ uris: batch }),
+    });
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`Spotify add tracks error (${res.status}): ${err}`);
+    }
+  }
+}
+
 export async function parallelSearch(
   accessToken: string,
   queries: string[],
