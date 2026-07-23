@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Undo2, X, Check } from 'lucide-react-native';
@@ -9,7 +9,7 @@ import Animated, {
   withSpring,
   runOnJS,
 } from 'react-native-reanimated';
-import { Audio } from 'expo-av';
+import { useAudioPlayer, useAudioPlayerStatus } from 'expo-audio';
 import { colors } from '../src/theme/colors';
 import { typography } from '../src/theme/typography';
 import { spacing } from '../src/theme/spacing';
@@ -23,8 +23,6 @@ const SWIPE_THRESHOLD = SCREEN_WIDTH * 0.3;
 export default function SwipeScreen() {
   const router = useRouter();
   const { tracks, currentIndex, isLoading, swipeRight, swipeLeft, undo } = useDeckStore();
-  const [sound, setSound] = useState<Audio.Sound | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [factExpanded, setFactExpanded] = useState(false);
   const [currentFact, setCurrentFact] = useState<string | undefined>();
 
@@ -34,36 +32,18 @@ export default function SwipeScreen() {
   const currentTrack = tracks[currentIndex];
   const remaining = tracks.length - currentIndex;
 
-  useEffect(() => {
-    return () => {
-      sound?.unloadAsync();
-    };
-  }, [sound]);
+  const player = useAudioPlayer(currentTrack?.previewUrl ?? null);
+  const status = useAudioPlayerStatus(player);
 
   useEffect(() => {
+    if (player.playing) {
+      player.pause();
+      player.seekTo(0);
+    }
     if (currentTrack?.previewUrl) {
-      playPreview(currentTrack.previewUrl);
+      player.play();
     }
   }, [currentIndex]);
-
-  async function playPreview(url: string) {
-    try {
-      if (sound) await sound.unloadAsync();
-      const { sound: newSound } = await Audio.Sound.createAsync(
-        { uri: url },
-        { shouldPlay: true },
-      );
-      setSound(newSound);
-      setIsPlaying(true);
-      newSound.setOnPlaybackStatusUpdate((status) => {
-        if (status.isLoaded && !status.isPlaying) {
-          setIsPlaying(false);
-        }
-      });
-    } catch {
-      setIsPlaying(false);
-    }
-  }
 
   const handleSwipeRight = useCallback(() => {
     swipeRight();
@@ -97,12 +77,11 @@ export default function SwipeScreen() {
 
   function handlePlayToggle() {
     if (!currentTrack?.previewUrl) return;
-    if (isPlaying) {
-      sound?.pauseAsync();
-      setIsPlaying(false);
+    if (status.playing) {
+      player.pause();
     } else {
-      sound?.playAsync();
-      setIsPlaying(true);
+      player.seekTo(0);
+      player.play();
     }
   }
 
@@ -116,7 +95,7 @@ export default function SwipeScreen() {
   }
 
   function handleFinishEarly() {
-    sound?.unloadAsync();
+    player.pause();
     router.push('/review');
   }
 
@@ -154,7 +133,7 @@ export default function SwipeScreen() {
             <SwipeCard
               track={currentTrack}
               isActive={true}
-              isPlaying={isPlaying}
+              isPlaying={status.playing}
               onPlay={handlePlayToggle}
               onFactToggle={handleFactToggle}
               factExpanded={factExpanded}

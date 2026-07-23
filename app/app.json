@@ -6,12 +6,16 @@
     "orientation": "portrait",
     "scheme": "swipemix",
     "userInterfaceStyle": "dark",
-    "newArchEnabled": true,
+    "experiments": {
+      "reactCompiler": true
+    },
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.swipemix.app",
       "infoPlist": {
-        "UIBackgroundModes": ["audio"]
+        "UIBackgroundModes": [
+          "audio"
+        ]
       }
     },
     "android": {
@@ -23,7 +27,8 @@
     "plugins": [
       "expo-router",
       "expo-secure-store",
-      "expo-av"
+      "expo-status-bar",
+      "expo-audio"
     ]
   }
 }

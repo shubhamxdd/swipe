@@ -4,28 +4,22 @@ Update this file after every meaningful implementation change.
 
 ## Current Phase
 
-Frontend implementation — Milestone 4 complete (scaffold + screens)
+Frontend implementation — Expo SDK upgraded 52→57, expo-av → expo-audio
 
 ## Current Goal
 
-Expo app built with all 4 screens (home, swipe, review, confirmation), theme system, Zustand stores, API client, and swipe gesture support via react-native-gesture-handler + reanimated.
+Expo SDK upgraded to latest version with all migration steps applied.
 
 ## Completed
 
-- Context files written (all 6)
-- Monorepo scaffolded (root package.json with npm workspaces)
-- Express + TypeScript server set up with health check
-- **Milestone 1 — Spotify OAuth**: `/api/auth/url`, `/api/auth/callback`, `/api/auth/refresh` routes with PKCE flow.
-- **Milestone 2 — Theme→Search pipeline**: OpenRouter LLM + Spotify search + deck assembly + auto-broadening.
-- **Milestone 3 — Preview lookup**: iTunes Search API + in-memory cache.
-- **Milestone 6 — Playlist save**: `/api/playlist` route (fixed endpoint name per Feb 2026 API changes).
-- **Milestone 4 — Swipe UI**: Expo app scaffolded in `app/` with:
-  - Home screen with theme input, "Build my deck" button, recent themes chips
-  - Swipe screen with gesture-based card swiping (PanGesture from reanimated), preview audio via expo-av, progress indicator, undo, finish early
-  - Review screen with track list, remove, editable playlist name, save to Spotify
-  - Confirmation screen with "Open in Spotify" deep link
-  - Zustand stores (auth + deck), API service, Spotify-dark theme system
-  - OAuth login button (placeholder — deep-link handling pending)
+- **Expo SDK upgrade 52→57**: `expo@~52.0.0` → `^57.0.8`, React 18.3.1 → 19.2.3, React Native 0.76.7 → 0.86.0
+- **Package updates**: All Expo packages updated to SDK 57 compatible versions, `lucide-react-native` 0.460→1.26 (React 19 support), TypeScript 5.3→6.0
+- **expo-av → expo-audio migration**: SwipeScreen now uses `useAudioPlayer` + `useAudioPlayerStatus` hooks instead of `Audio.Sound.createAsync`
+- **Reanimated 3→4**: Babel plugin changed from `react-native-reanimated/plugin` to `react-native-worklets/plugin`
+- **app.json**: Removed `newArchEnabled` (default), added `experiments.reactCompiler: true`, replaced `expo-av` plugin with `expo-audio`
+- **Removed deprecated packages**: `expo-av`, `expo-constants` removed from dependencies
+- **TypeScript**: Updated tsconfig to match Expo SDK 57 base, all TS errors resolved
+- **All expo-doctor checks pass** (20/20)
 
 ## In Progress
 
@@ -33,7 +27,7 @@ Expo app built with all 4 screens (home, swipe, review, confirmation), theme sys
 
 ## Next Up
 
-**Polish & OAuth deep-link integration**
+**OAuth deep-link integration**
 - Wire the Spotify OAuth PKCE flow to the mobile app (generate PKCE on-device, open browser, handle redirect via expo-linking)
 - Test end-to-end flow on actual device
 - Fun facts async integration
