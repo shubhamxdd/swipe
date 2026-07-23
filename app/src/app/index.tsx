@@ -43,7 +43,7 @@ export default function HomeScreen() {
       }
     }
     poll();
-    const id = setInterval(poll, 30000);
+    const id = setInterval(poll, 10000);
     return () => clearInterval(id);
   }, []);
 
