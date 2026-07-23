@@ -1,5 +1,5 @@
 import { Image, Linking, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { X, ExternalLink } from 'lucide-react-native';
+import { X, ExternalLink, Disc, Calendar, Clock, User } from 'lucide-react-native';
 import type { SpotifyTrack } from '../types';
 import { colors } from '../theme/colors';
 import { typography } from '../theme/typography';
@@ -11,11 +11,26 @@ interface TrackDetailModalProps {
   onClose: () => void;
 }
 
+function formatDuration(ms: number): string {
+  const minutes = Math.floor(ms / 60000);
+  const seconds = Math.floor((ms % 60000) / 1000);
+  return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
+
+function extractYear(dateStr?: string): string {
+  if (!dateStr) return '';
+  return dateStr.slice(0, 4);
+}
+
 export function TrackDetailModal({ track, visible, onClose }: TrackDetailModalProps) {
   if (!track) return null;
 
   const imageUrl = track.album?.images?.[0]?.url;
   const spotifyUri = track.uri;
+  const albumName = track.album?.name;
+  const releaseYear = extractYear(track.album?.release_date);
+  const artistNames = track.artists.map((a) => a.name).join(', ');
+  const duration = formatDuration(track.duration_ms);
 
   function handleOpen() {
     Linking.openURL(spotifyUri);
@@ -34,9 +49,30 @@ export function TrackDetailModal({ track, visible, onClose }: TrackDetailModalPr
           )}
 
           <Text style={styles.title} numberOfLines={2}>{track.name}</Text>
-          <Text style={styles.artist} numberOfLines={1}>
-            {track.artists.map((a) => a.name).join(', ')}
-          </Text>
+          <Text style={styles.artist} numberOfLines={1}>{artistNames}</Text>
+
+          <View style={styles.infoGrid}>
+            {albumName && (
+              <View style={styles.infoRow}>
+                <Disc size={14} color={colors.text.muted} />
+                <Text style={styles.infoText} numberOfLines={1}>{albumName}</Text>
+              </View>
+            )}
+            {releaseYear && (
+              <View style={styles.infoRow}>
+                <Calendar size={14} color={colors.text.muted} />
+                <Text style={styles.infoText}>{releaseYear}</Text>
+              </View>
+            )}
+            <View style={styles.infoRow}>
+              <Clock size={14} color={colors.text.muted} />
+              <Text style={styles.infoText}>{duration}</Text>
+            </View>
+            <View style={styles.infoRow}>
+              <User size={14} color={colors.text.muted} />
+              <Text style={styles.infoText} numberOfLines={1}>{track.artists.map((a) => a.name).join(', ')}</Text>
+            </View>
+          </View>
 
           <TouchableOpacity style={styles.openButton} onPress={handleOpen} accessibilityRole="button" accessibilityLabel="Open in Spotify">
             <ExternalLink size={18} color="#fff" />
@@ -92,6 +128,22 @@ const styles = StyleSheet.create({
     ...typography.artistName,
     color: colors.text.secondary,
     textAlign: 'center',
+  },
+  infoGrid: {
+    width: '100%',
+    gap: spacing.sm,
+    marginTop: spacing.sm,
+    paddingHorizontal: spacing.sm,
+  },
+  infoRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  infoText: {
+    ...typography.caption,
+    color: colors.text.secondary,
+    flex: 1,
   },
   openButton: {
     flexDirection: 'row',

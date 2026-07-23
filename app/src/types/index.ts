@@ -12,6 +12,7 @@ export interface SpotifyArtist {
 export interface SpotifyAlbum {
   images: SpotifyImage[];
   name: string;
+  release_date?: string;
 }
 
 export interface SpotifyTrack {
@@ -21,6 +22,7 @@ export interface SpotifyTrack {
   album: SpotifyAlbum;
   previewUrl: string | null;
   uri: string;
+  duration_ms: number;
 }
 
 export interface ThemeResponse {

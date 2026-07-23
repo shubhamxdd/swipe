@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator, ScrollView, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
@@ -128,8 +128,8 @@ export default function HomeScreen() {
       const data = await submitTheme(accessToken, trimmed);
       setDeckBatch(data.sessionId, data.theme, data.playlistName, data.tracks);
       router.push('/review');
-    } catch {
-      setError('Failed to generate playlist');
+    } catch (err) {
+      Alert.alert('Error', err instanceof Error ? err.message : 'Failed to generate playlist');
     } finally {
       setIsSubmitting(false);
     }
